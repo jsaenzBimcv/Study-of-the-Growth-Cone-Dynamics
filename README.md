@@ -1,7 +1,5 @@
 # Study-of-the-Growth-Cone-Dynamics
 
-# Project Title
-
 One Paragraph of project description goes here
 
 ## Getting Started
@@ -79,6 +77,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
+
+The Study-of-the-Growth-Cone-Dynamics is free and open source for academic/research purposes (non-commercial)¹.
+
+¹ Some algorithms of the Study-of-the-Growth-Cone-Dynamics are free for commercial purposes and others not. First you need to contact the authors of your desired algorithm and check with them the appropriate license.
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
