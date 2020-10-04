@@ -1,6 +1,34 @@
 # Study-of-the-Growth-Cone-Dynamics
 
-One Paragraph of project description goes here
+Los conos de crecimiento son estructuras importantes para la formación del sistema nervioso central y periférico, y para su mantenimiento durante la edad adulta. Los conos son estructuras altamente dinámicas, que viajan a través de los tejidos guiando el crecimiento axonal hasta alcanzar su tejido blanco.
+La morfología del cono de crecimiento es un parámetro que nos indica la funcionalidad del cono de crecimiento. Esto es importante porque la extensión y la direccionalidad del cono de crecimiento dependen de esta funcionalidad.
+
+Estudiar la morfometría geométrica en los movimientos de los conos de crecimiento, requiere abordar tres retos:
+
+•   Los límites difusos de los conos de crecimiento, 
+•   La falta de puntos de referencia anatómicos y 
+•   Alta dinámica de cambio en los patrones de crecimiento en el tiempo. 
+
+A diferencia de otras estructuras anatómicas, el contorno de los conos de crecimiento puede no estar definidos claramente, incluso en aquellos conos que presentan en un inicio, límites claramente definidos, pasará normalmente que a través de las fases de desarrollo sus límites sean difusos, podría elegirse un valor umbral para definir los límites del cono, pero la decisión de un nivel umbral arbitrario podría descartar información espacial valiosa del patrón
+
+## Fases del Estudio 
+
+### Time-Lapse pre_processing
+
+Para la segmentación y normalización espacial de los conos de crecimiento se utiliza la aplicación __Image Batch Processor__ (MathWorks), para procesar el lote de imagenes de un Time-Lapse en dos etapas:
+
+1- Configuración de parametros: se proporciona una inetrfaz gráfica de usuario (GUI), que permite visualmente realizar la segmentación al aplicar diferentes configuraciones con el objetivo de buscar la mejor segmentación.
+
+* Open your MATLAB and run the following setup script:
+
+```
+seg_Cone_Morphology/conesSegmentation.m
+```
+
+
+
+
+
 
 ## Getting Started
 
@@ -11,7 +39,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+conesSegmentation.m
 ```
 
 ### Installing
