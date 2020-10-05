@@ -5,8 +5,8 @@ La morfología del cono de crecimiento es un parámetro que nos indica la funcio
 
 Estudiar la morfometría geométrica en los movimientos de los conos de crecimiento, requiere abordar tres retos:
 
-•   Los límites difusos de los conos de crecimiento, 
-•   La falta de puntos de referencia anatómicos y 
+•   Los límites difusos de los conos de crecimiento.
+•   La falta de puntos de referencia anatómicos.
 •   Alta dinámica de cambio en los patrones de crecimiento en el tiempo. 
 
 A diferencia de otras estructuras anatómicas, el contorno de los conos de crecimiento puede no estar definidos claramente, incluso en aquellos conos que presentan en un inicio, límites claramente definidos, pasará normalmente que a través de las fases de desarrollo sus límites sean difusos, podría elegirse un valor umbral para definir los límites del cono, pero la decisión de un nivel umbral arbitrario podría descartar información espacial valiosa del patrón
