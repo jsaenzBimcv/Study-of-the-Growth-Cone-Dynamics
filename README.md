@@ -27,7 +27,7 @@ para un lote de imagenes de un Time-Lapse en dos etapas:
 
 * Open your MATLAB and run the Image Batch Processor with the following configuration script:
 ```
-<a href=https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m</a> 
+<a href=https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology">seg_Cone_Morphology/conesSegmentation.m</a> 
 ```
 2- __Procesamiento de parametros__: Utiliza los parametros almacenados en el archivo config.dat para segmentar un lote de imágenes.
 
@@ -65,9 +65,6 @@ What things you need to install the software and how to install them
 conesSegmentation.m
 ```
 
-
-
-
 ## Authors
 
 * **Muñoz Lasso, DC.** (2017). - *Doctoral Thesis* - Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
@@ -93,7 +90,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
  ## Rights and permissions.
 
  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>., which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder.
-
 
 
 ## Acknowledgments
