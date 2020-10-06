@@ -68,7 +68,6 @@ conesSegmentation.m
 
 
 
-
 ## Authors
 
 * **Muñoz Lasso, DC.** (2017). - *Doctoral Thesis* - Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
