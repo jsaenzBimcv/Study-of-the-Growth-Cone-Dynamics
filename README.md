@@ -98,7 +98,6 @@ Investigador: Dra. Diana Carolina Muñoz Lasso, Universitat Politècnica de Val�
 
 En colaboración con: 
 * Laboratorio de Fisiopatología de las Enfermedades Raras, Universidad de Valencia
-* Centro de Excelencia e Innovación Tecnológica de Bioimagen, Conselleria de Sanitat (CEIB-CS)<a href="http://ceib.san.gva.es/ceib-cs">CEIB’s</a>, Biomedical Imaging Mixed Joint Unit, Foundation for the Promotion of Health and Biomedical Research (FISABIO) and the Principe Felipe Research Center (CIPF), Val\`{e}ncia, Spain.
-Unidad Mixta FISABIO y el Centro de Investigación Prince Felipe (CIPF) (<a href="http://www.cipf.es/cipf-fisabio-joint-research-unit-biomedical-imaging">Medical Imaging Bank of the Valencia Region</a>)
+* Centro de Excelencia e Innovación Tecnológica de Bioimagen, Conselleria de Sanitat (CEIB-CS)<a href="http://ceib.san.gva.es/ceib-cs">CEIB’s</a>, <a href="http://www.cipf.es/cipf-fisabio-joint-research-unit-biomedical-imaging">Biomedical Imaging Mixed Joint Unit, Foundation for the Promotion of Health and Biomedical Research (FISABIO) and the Principe Felipe Research Center (CIPF), Val`encia, Spain.</a>
 
 
