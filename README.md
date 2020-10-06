@@ -11,7 +11,7 @@ Estudiar la morfometría geométrica en los movimientos de los conos de crecimie
 
 A diferencia de otras estructuras anatómicas, el contorno de los conos de crecimiento puede no estar definido claramente, incluso en aquellos conos que presentan en un inicio, límites claramente definidos, pasará normalmente que a través de las fases de desarrollo sus límites sean difusos, podría elegirse un valor umbral para definir los límites del cono, pero la decisión de un nivel umbral arbitrario podría descartar información espacial valiosa del patrón, adicionalmente en el estudio temporal se presentan fuertes cambios de iluminación y ruido producto de otros elementos presentes en el medio que pueden ocluir secciones del cono de crecimiento. Por los interiores motivos, se deben de mejorar las imágenes para aumentar la información discriminativa incluida y asegurar que los factores antes mensionados no puedan influir de manera negativa en la extracción de características. 
 
-El segundo reto hace referencia a la variabilidad de la forma del cono a menudo carente de puntos de referencia biologicos que permitan la comparación entre individuos. En este sentido, se puede representar la forma del cono de crecimiento separnadolo del fondo de la imagen (segmentación) como una nueva imagen binaria o máscara y de está manera a plicarla a mas de dos dimensiones (por ejemplo, la forma 2D + tiempo). No obstante, en un estudio temporal existe una alta correlación entre conos (pixeles redundantes), convirtiendose en un inconveniente para el análisis estadístico. Una extrategia para abordar este reto es, el análisis eigenshape descrito (MacLeod, 1999 ) y aplicado para el caso de growth cone por Goodhill et al. (Referencia). EL metodo eigenshape, representa la forma mediante las coordenadas (x,y) de un conjunto de puntos de referencia, colocados alrededor del perímetro del cono y seleccionados de tal manera que no dependan de la orientación específica del cono (“invariante a la rotación”), o bien alineando la población de modo que las regiones semejantes se encuentren en ubicaciones espaciales correspondientes. Los nuevos pares de coordenadas generados corresponden a un vector de números que representan cada contorno como un punto en un espacio de N dimensiones, luego de ésto, se aplica “Análisis de Componentes Principales” (PCA) para obtener las direcciones en el espacio de forma que capturan la mayor proporción de varianza (Goodhill, Faville, & Scott, 2015). 
+El segundo reto hace referencia a la variabilidad de la forma del cono a menudo carente de puntos de referencia biologicos que permitan la comparación entre individuos. En este sentido, se puede representar la forma del cono de crecimiento separnadolo del fondo de la imagen (segmentación) como una nueva imagen binaria o máscara y de está manera a plicarla a mas de dos dimensiones (por ejemplo, la forma 2D + tiempo). No obstante, en un estudio temporal existe una alta correlación entre conos (pixeles redundantes), convirtiendose en un inconveniente para el análisis estadístico. Una extrategia para abordar este reto es, el análisis eigenshape descrito [[1]](#1) (MacLeod, 1999 ) y aplicado para el caso de growth cone por Goodhill et al. (Referencia). EL metodo eigenshape, representa la forma mediante las coordenadas (x,y) de un conjunto de puntos de referencia, colocados alrededor del perímetro del cono y seleccionados de tal manera que no dependan de la orientación específica del cono (“invariante a la rotación”), o bien alineando la población de modo que las regiones semejantes se encuentren en ubicaciones espaciales correspondientes. Los nuevos pares de coordenadas generados corresponden a un vector de números que representan cada contorno como un punto en un espacio de N dimensiones, luego de ésto, se aplica “Análisis de Componentes Principales” (PCA) para obtener las direcciones en el espacio de forma que capturan la mayor proporción de varianza (Goodhill, Faville, & Scott, 2015). 
 
 El tercer reto, relacionado con el rapido cambio de forma, tamaño y posción requiere de muchas muestras (frames). Este hecho tiene una ventaja clara, el manejo de gran cantidad de muestras pretende obtener mejores estimadores de variación de la forma de los conos de crecimiento.
 
@@ -74,6 +74,27 @@ conesSegmentation.m
 * **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+
+# References
+
+<a id="1">[1]</a>  MacLeod, N. (1999). Generalizing and extending the eigenshape method of shape space visualization and analysis. Paleobiology, 107-138.
+
+<a id="2">[2]</a>  Bennett CM., Miller MB. (2010) How reliable are the results from functional magnetic resonance imaging? Annals of the New York Academy of Sciences 1191:133-155.
+
+<a id="3">[3]</a>  Mildenberger, P., Eichelberg, M., & Martin, E. (2002). Introduction to the DICOM standard. European radiology, 12(4), 920-927.
+
+<a id="4">[4]</a>  Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E. P., ... & Handwerker, D. A. (2016). The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments. Scientific Data, 3, 160044.
+
+<a id="5">[5]</a>  Elmaoğlu, M., & Çelik, A. (2011). MRI handbook: MR physics, patient positioning, and protocols. Springer Science & Business Media.
+
+<a id="6">[6]</a>  DE ESPAÑA, J. C. I. R. (1999). Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal. Bol Del Estado, 404
+
+<a id="7">[7]</a>  Serrano, J. M. S. (2013). CLOUD CEIB I+ D. Sistema de gestión y extracción de conocimiento de la imágen médica (Doctoral dissertation, Universitat d'Alacant-Universidad de Alicante)
+
+
+
+
 
 ## License
 
