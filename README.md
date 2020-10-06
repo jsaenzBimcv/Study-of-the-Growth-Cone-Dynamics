@@ -71,12 +71,8 @@ conesSegmentation.m
 
 ## Authors
 
-* **Muñoz Lasso, DC.** (2013). - *Initial work* - Estudio de la fisiopatología de la ataxia de Friedreich-dinámica del transporte axonal. (http://hdl.handle.net/10251/45095)
-
-  
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
+* **Muñoz Lasso, DC.** (2017). - *Doctoral Thesis* - Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
+* **Sáenz Gamboa, JJ.** (2017). - *Master Dissertation* - Estudio morfológico en Conos de Crecimiento Mediante Análisis de Componentes Principales Y Modelos Ocultos de Markov. Universitat Politècnica de València.
 
 # References
 
