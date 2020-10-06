@@ -1,7 +1,7 @@
 # Study-of-the-Growth-Cone-Dynamics
 
 Los conos de crecimiento son estructuras importantes para la formación del sistema nervioso central y periférico, y para su mantenimiento durante la edad adulta. Los conos son estructuras altamente dinámicas, que viajan a través de los tejidos guiando el crecimiento axonal hasta alcanzar su tejido blanco.
-La morfología del cono de crecimiento es un parámetro que nos indica la funcionalidad del cono de crecimiento. Esto es importante porque la extensión y la direccionalidad del cono de crecimiento dependen de esta funcionalidad.
+La morfología del cono de crecimiento es un parámetro que nos indica la funcionalidad del cono de crecimiento. Esto es importante porque la extensión y la direccionalidad del cono de crecimiento dependen de esta funcionalidad.[[1]](#1)
 
 Estudiar la morfometría geométrica en los movimientos de los conos de crecimiento, requiere abordar tres retos:
 
@@ -11,7 +11,7 @@ Estudiar la morfometría geométrica en los movimientos de los conos de crecimie
 
 A diferencia de otras estructuras anatómicas, el contorno de los conos de crecimiento puede no estar definido claramente, incluso en aquellos conos que presentan en un inicio, límites claramente definidos, pasará normalmente que a través de las fases de desarrollo sus límites sean difusos, podría elegirse un valor umbral para definir los límites del cono, pero la decisión de un nivel umbral arbitrario podría descartar información espacial valiosa del patrón, adicionalmente en el estudio temporal se presentan fuertes cambios de iluminación y ruido producto de otros elementos presentes en el medio que pueden ocluir secciones del cono de crecimiento. Por los interiores motivos, se deben de mejorar las imágenes para aumentar la información discriminativa incluida y asegurar que los factores antes mensionados no puedan influir de manera negativa en la extracción de características. 
 
-El segundo reto hace referencia a la variabilidad de la forma del cono a menudo carente de puntos de referencia biologicos que permitan la comparación entre individuos. En este sentido, se puede representar la forma del cono de crecimiento separnadolo del fondo de la imagen (segmentación) como una nueva imagen binaria o máscara y de está manera a plicarla a mas de dos dimensiones (por ejemplo, la forma 2D + tiempo). No obstante, en un estudio temporal existe una alta correlación entre conos (pixeles redundantes), convirtiendose en un inconveniente para el análisis estadístico. Una extrategia para abordar este reto es, el análisis eigenshape descrito por MacLeod et al.[[1]](#1) y aplicado para el caso de growth cone por Goodhill et al. [[2]](#2). EL metodo eigenshape, representa la forma mediante las coordenadas (x,y) de un conjunto de puntos de referencia, colocados alrededor del perímetro del cono y seleccionados de tal manera que no dependan de la orientación específica del cono (“invariante a la rotación”), o bien alineando la población de modo que las regiones semejantes se encuentren en ubicaciones espaciales correspondientes. Los nuevos pares de coordenadas generados corresponden a un vector de números que representan cada contorno como un punto en un espacio de N dimensiones, luego de ésto, se aplica “Análisis de Componentes Principales” (PCA) para obtener las direcciones en el espacio de forma que capturan la mayor proporción de varianza [[2]](#2). 
+El segundo reto hace referencia a la variabilidad de la forma del cono a menudo carente de puntos de referencia biologicos que permitan la comparación entre individuos. En este sentido, se puede representar la forma del cono de crecimiento separnadolo del fondo de la imagen (segmentación) como una nueva imagen binaria o máscara y de está manera a plicarla a mas de dos dimensiones (por ejemplo, la forma 2D + tiempo). No obstante, en un estudio temporal existe una alta correlación entre conos (pixeles redundantes), convirtiendose en un inconveniente para el análisis estadístico. Una extrategia para abordar este reto es, el análisis eigenshape descrito por MacLeod et al.[[2]](#2) y aplicado para el caso de growth cone por Goodhill et al. [[3]](#3). EL metodo eigenshape, representa la forma mediante las coordenadas (x,y) de un conjunto de puntos de referencia, colocados alrededor del perímetro del cono y seleccionados de tal manera que no dependan de la orientación específica del cono (“invariante a la rotación”), o bien alineando la población de modo que las regiones semejantes se encuentren en ubicaciones espaciales correspondientes. Los nuevos pares de coordenadas generados corresponden a un vector de números que representan cada contorno como un punto en un espacio de N dimensiones, luego de ésto, se aplica “Análisis de Componentes Principales” (PCA) para obtener las direcciones en el espacio de forma que capturan la mayor proporción de varianza [[3]](#3). 
 
 El tercer reto, relacionado con el rapido cambio de forma, tamaño y posción requiere de muchas muestras (frames). Este hecho tiene una ventaja clara, el manejo de gran cantidad de muestras pretende obtener mejores estimadores de variación de la forma de los conos de crecimiento.
 
@@ -75,9 +75,11 @@ conesSegmentation.m
 
 # References
 
-<a id="1">[1]</a>  MacLeod, N. (1999). Generalizing and extending the eigenshape method of shape space visualization and analysis. Paleobiology, 107-138.
+<a id="1">[1]</a>  Muñoz Lasso, DC. (2017). Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
 
-<a id="2">[2]</a>  Goodhill, G. J., Faville, R. A., Sutherland, D. J., Bicknell, B. A., Thompson, A. W., Pujic, Z., ... & Scott, E. K. (2015). The dynamics of growth cone morphology. BMC biology, 13(1), 10.
+<a id="2">[2]</a>  MacLeod, N. (1999). Generalizing and extending the eigenshape method of shape space visualization and analysis. Paleobiology, 107-138.
+
+<a id="3">[3]</a>  Goodhill, G. J., Faville, R. A., Sutherland, D. J., Bicknell, B. A., Thompson, A. W., Pujic, Z., ... & Scott, E. K. (2015). The dynamics of growth cone morphology. BMC biology, 13(1), 10.
 
 ## License
 
