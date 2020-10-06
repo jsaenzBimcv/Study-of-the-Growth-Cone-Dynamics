@@ -97,7 +97,7 @@ Estudio de la dinámica del crecimiento axonal de las neuronas sensoriales en el
 Investigador: Dra. Diana Carolina Muñoz Lasso, Universitat Politècnica de València
 
 En colaboración con: 
-* Laboratorio de Fisiopatología de las Enfermedades Raras, Universidad de Valencia
+* <a href="https://www.uv.es/ciberer2/index.wiki">Laboratorio de Fisiopatología de las Enfermedades Raras</a>, Universidad de Valencia
 * Centro de Excelencia e Innovación Tecnológica de Bioimagen, Conselleria de Sanitat (CEIB-CS)<a href="http://ceib.san.gva.es/ceib-cs">CEIB’s</a>, <a href="http://www.cipf.es/cipf-fisabio-joint-research-unit-biomedical-imaging">Biomedical Imaging Mixed Joint Unit, Foundation for the Promotion of Health and Biomedical Research (FISABIO) and the Principe Felipe Research Center (CIPF), Val`encia, Spain.</a>
 
 
