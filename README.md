@@ -92,12 +92,11 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Esta investigación se desarrolla como parte de la investigación de doctorado:
-Estudio de la dinámica del crecimiento axonal de las neuronas sensoriales en el modelo de ratón yg8sr para la ataxia de Friedreich.
-Investigador: Dra. Diana Carolina Muñoz Lasso, Universitat Politècnica de València
+This research was developed as part of the PhD research: __Study of the dynamics of axonal growth of sensory neurons in the yg8sr mouse model for Friedreich's ataxia__
+Researcher: __Dr. Diana Carolina Muñoz Lasso__, Polytechnic University of Val`encia. http://hdl.handle.net/10251/45095
 
-En colaboración con: 
+In collaboration with: 
 * <a href="https://www.uv.es/ciberer2/index.wiki">Laboratorio de Fisiopatología de las Enfermedades Raras</a>, Universidad de Valencia
-* Centro de Excelencia e Innovación Tecnológica de Bioimagen, Conselleria de Sanitat (CEIB-CS)<a href="http://ceib.san.gva.es/ceib-cs">CEIB’s</a>, <a href="http://www.cipf.es/cipf-fisabio-joint-research-unit-biomedical-imaging">Biomedical Imaging Mixed Joint Unit, Foundation for the Promotion of Health and Biomedical Research (FISABIO) and the Principe Felipe Research Center (CIPF), Val`encia, Spain.</a>
+* <a href="http://www.cipf.es/cipf-fisabio-joint-research-unit-biomedical-imaging">Biomedical Imaging Mixed Joint Unit, Foundation for the Promotion of Health and Biomedical Research (FISABIO) and the Principe Felipe Research Center (CIPF), Val`encia, Spain.</a>
 
 
