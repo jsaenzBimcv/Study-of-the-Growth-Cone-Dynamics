@@ -20,9 +20,10 @@ El tercer reto, relacionado con el rapido cambio de forma, tamaño y posción re
 
 ### Time-Lapse pre_processing
 
-En la segmentación y normalización espacial de los conos de crecimiento se utiliza la aplicación <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), para procesar el lote de imagenes de un Time-Lapse en dos etapas:
+Utilizando la aplicación <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), se realiza la segmentación y normalización espacial de los conos de crecimiento
+para un lote de imagenes de un Time-Lapse en dos etapas:
 
-1- __Configuración de parametros:__ se proporciona una inetrfaz gráfica de usuario (GUI), que permite visualmente realizar la segmentación al aplicar diferentes configuraciones con el objetivo de buscar la mejor segmentación.
+1- __Configuración de parametros:__ se proporciona una interfaz gráfica de usuario (GUI), que permite visualmente realizar la segmentación al aplicar diferentes configuraciones con el objetivo de buscar la mejor segmentación.
 
 * Open your MATLAB and run the Image Batch Processor with the following configuration script:
 ```
@@ -35,7 +36,6 @@ seg_Cone_Morphology/conesSegmentation.m
 ```
 seg_Cone_Morphology/conesSegmentation.m
 ```
-
 
 ### Extracción de características 
 
