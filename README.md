@@ -92,7 +92,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Esta investigación se desarrolla como parte de la investigación de doctorado:
+Esta investigación se desarrolla como parte de la investigación de doctorado:
 Estudio de la dinámica del crecimiento axonal de las neuronas sensoriales en el modelo de ratón yg8sr para la ataxia de Friedreich.
 Investigador: Dra. Diana Carolina Muñoz Lasso, Universitat Politècnica de València
 
