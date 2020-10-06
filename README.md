@@ -71,7 +71,9 @@ conesSegmentation.m
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Muñoz Lasso, DC.** (2013). - *Initial work* - Estudio de la fisiopatología de la ataxia de Friedreich-dinámica del transporte axonal. (http://hdl.handle.net/10251/45095)
+
+  
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
