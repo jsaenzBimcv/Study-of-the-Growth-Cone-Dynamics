@@ -30,7 +30,7 @@ para un lote de imagenes de un Time-Lapse en dos etapas:
   - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m </a>
   
 <p style="text-align:center">
-<img src="./images/dicom2bids.png" >
+<img src="./images/IBP.png" >
 </p>
 <div style='text-align:center;'>
 figure 1: DICOM to BIDS conversion with the tool Dcm2Bids
