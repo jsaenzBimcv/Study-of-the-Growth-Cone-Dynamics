@@ -27,7 +27,16 @@ para un lote de imagenes de un Time-Lapse en dos etapas:
 
 * Open your MATLAB and run the Image Batch Processor with the following configuration script:
 
-  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m </a> 
+  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m </a>
+  
+<p style="text-align:center">
+<img src="./images/dicom2bids.png" >
+</p>
+<div style='text-align:center;'>
+figure 1: DICOM to BIDS conversion with the tool Dcm2Bids
+</div>
+
+
 
 2- __Procesamiento de parametros__: Utiliza los parametros almacenados en el archivo config.dat para segmentar un lote de imágenes.
 
