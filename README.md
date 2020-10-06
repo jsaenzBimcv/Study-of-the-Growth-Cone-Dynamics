@@ -37,6 +37,13 @@ seg_Cone_Morphology/conesSegmentation.m
 ```
 
 
+### Extracción de características 
+
+La técnica utilizada para la extracción de información referente a la forma del objeto (basada en contornos), es el __análisis Eigenshape__.
+Eigenshape utiliza los datos de coordenadas (X,Y) del contorno del cono de crecimiento como un vector que describe la forma. Sin embargo, la lista de coordenadas que representan el contorno del cono, no se pueden comparar inmediatamente con otro contorno, estos puntos no estan espaciados de la misma manera, por lo que es necesario crear un nuevo conjunto que esté espaciado uniformemente a lo largo de la misma curva.
+
+Para esto es necesario interpolar el conjunto de puntos a distancias fijas a lo largo de la curva en el espacio (2D) que forma el contorno. El método utilizado para calcular los puntos a lo largo de la curva, fue la interpolación cubica de Hermite a trozos (calculados usando pchip en Matlab (MathWorks, s.f.)). 
+ 
 
 
 
