@@ -43,13 +43,19 @@ La técnica utilizada para la extracción de información referente a la forma d
 Eigenshape utiliza los datos de coordenadas (X,Y) del contorno del cono de crecimiento como un vector que describe la forma. Sin embargo, la lista de coordenadas que representan el contorno del cono, no se pueden comparar inmediatamente con otro contorno, estos puntos no estan espaciados de la misma manera, por lo que es necesario crear un nuevo conjunto que esté espaciado uniformemente a lo largo de la misma curva.
 
 Para esto es necesario interpolar el conjunto de puntos a distancias fijas a lo largo de la curva en el espacio (2D) que forma el contorno. El método utilizado para calcular los puntos a lo largo de la curva, fue la interpolación cubica de Hermite a trozos (calculados usando pchip en Matlab (MathWorks, s.f.)). 
- 
 
+* Open your MATLAB and run the following script:
+```
+seg_Cone_Morphology/conesSegmentation.m
+```
+ ### Análisis de componentes principales 
 
+El conjunto de coordenadas debe reducirse a una forma comprensible (de baja dimensión), para ello, la herramienta utilizada es el análisis de componentes principales (PCA). De esta forma, es posible mostrar los conos de crecimiento como puntos en un diagrama de dispersion bidimensional o tridimensional sin perder mucha información, indicando las principales direcciones de variación de la forma dentro de la muestra.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+* Open your MATLAB and run the following script:
+```
+seg_Cone_Morphology/conesSegmentation.m
+```
 
 ### Prerequisites
 
@@ -59,61 +65,9 @@ What things you need to install the software and how to install them
 conesSegmentation.m
 ```
 
-### Installing
 
-A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
@@ -138,7 +92,12 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Esta investigación se desarrolla como parte de la investigación de doctorado:
+Estudio de la dinámica del crecimiento axonal de las neuronas sensoriales en el modelo de ratón yg8sr para la ataxia de Friedreich.
+Investigador: Dra. Diana Carolina Muñoz Lasso, Universitat Politècnica de València
+
+En colaboración con: 
+* Laboratorio de Fisiopatología de las Enfermedades Raras, Universidad de Valencia
+* Centro de Excelencia e Innovación Tecnológica de Bioimagen, Conselleria de Sanitat (CEIB-CS), Unidad Mixta FISABIO y el Centro de Investigación Prince Felipe (CIPF)
+
 
