@@ -79,20 +79,6 @@ conesSegmentation.m
 
 <a id="2">[2]</a>  Goodhill, G. J., Faville, R. A., Sutherland, D. J., Bicknell, B. A., Thompson, A. W., Pujic, Z., ... & Scott, E. K. (2015). The dynamics of growth cone morphology. BMC biology, 13(1), 10.
 
-<a id="3">[3]</a>  Mildenberger, P., Eichelberg, M., & Martin, E. (2002). Introduction to the DICOM standard. European radiology, 12(4), 920-927.
-
-<a id="4">[4]</a>  Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E. P., ... & Handwerker, D. A. (2016). The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments. Scientific Data, 3, 160044.
-
-<a id="5">[5]</a>  Elmaoğlu, M., & Çelik, A. (2011). MRI handbook: MR physics, patient positioning, and protocols. Springer Science & Business Media.
-
-<a id="6">[6]</a>  DE ESPAÑA, J. C. I. R. (1999). Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal. Bol Del Estado, 404
-
-<a id="7">[7]</a>  Serrano, J. M. S. (2013). CLOUD CEIB I+ D. Sistema de gestión y extracción de conocimiento de la imágen médica (Doctoral dissertation, Universitat d'Alacant-Universidad de Alicante)
-
-
-
-
-
 ## License
 
 The Study-of-the-Growth-Cone-Dynamics is free and open source for academic/research purposes (non-commercial)¹.
