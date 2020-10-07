@@ -27,14 +27,14 @@ figure 1: Diagrama del proceso de análisis morfológico.
 
 
 
-### Time-Lapse pre_processing
+### Time-Lapse Processing
 
-Utilizando la aplicación <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), se realiza la segmentación y normalización espacial de los conos de crecimiento
+Utilizando la herramienta <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), se realiza la segmentación y normalización espacial de los conos de crecimiento
 para un lote de imagenes de un Time-Lapse en dos etapas:
 
 1- __Configuración de parametros:__ se proporciona una interfaz gráfica de usuario (GUI), que permite visualmente realizar la segmentación al aplicar diferentes configuraciones con el objetivo de buscar la mejor segmentación.
 
-* Open your MATLAB and run the Image Batch Processor with the following configuration script:
+* Open your MATLAB and run the the following script:
 
   - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m </a>
   
@@ -43,20 +43,26 @@ para un lote de imagenes de un Time-Lapse en dos etapas:
 </p>
 <div style='text-align:center;'>
 
-figure 2: Interfaz gráfica de usuario para la selección de parámetros de segmentación. 1-cargue una imagen, 2- mejore la información discriminativa aplicando una técnica de normalizacion de la luz, 3- búsqueda del mejor umbral para binarizar la imagen utilizando la función H-Min, 4-sí existen elementos que no pertenecen a la región de interés pueden ser eliminadas de la imagen binarizada, 5- Rotar verticalmente y normalizar la posición espacial del cono, 6- guardar los parámetros antes seleccionados.
+figure 2: Interfaz gráfica de usuario para la selección de parámetros de segmentación. 1-cargue una imagen, 2- mejore la información discriminativa aplicando una técnica de normalizacion de la luz, 3- búsqueda del mejor umbral para binarizar la imagen utilizando la función H-Min, 4-sí existen elementos que no pertenecen a la región de interés pueden ser eliminadas de la imagen binarizada, 5- Rotar verticalmente y normalizar la posición espacial del cono, 6- guardar los parámetros seleccionados.
 </div>
 
 
+2- __Procesamiento de parametros__:  Los parametros seleccionados en el paso anterior y almacenados en:
+- <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/seg_Cone_Morphology/config"> seg_Cone_Morphology/config/config.dat </a> 
 
+se utilizan para segmentar un Time-Lapse, en este caso de 120 imágenes.
 
+* Run the Image Batch Processor with the following script:
 
-2- __Procesamiento de parametros__: Utiliza los parametros almacenados en el archivo config.dat para segmentar un lote de imágenes.
+- <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m </a>
 
-* Run the Image Batch Processor with the following configuration script:
+<p style="text-align:center">
+<img src="./images/gui.PNG" >
+</p>
+<div style='text-align:center;'>
 
-```
-seg_Cone_Morphology/conesSegmentation.m
-```
+figure 3: Segmentación de un Time-Lapse (120 imagenes) utilizando la herramienta <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html"> Image Batch Processor</a> (MathWorks) .
+</div>
 
 ### Extracción de características 
 
