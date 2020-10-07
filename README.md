@@ -15,7 +15,7 @@ The second challenge concerns the variability of the cone shape, often lacking b
 
 The third challenge, related to the rapid change of shape, size and position requires many samples (frames). This fact has a clear advantage, the handling of large numbers of samples aims to obtain better estimates of the variation in the shape of the growth cones.
 
-### Prerequisites
+## Prerequisites
 ```
 Mathworks Matlab R2019b
 ```
@@ -30,8 +30,6 @@ Mathworks Matlab R2019b
 
 figure 1: Diagram of the morphological analysis process.
 </div>
-
-
 
 ### Time-Lapse Processing, Growth Cone Segmentation
 
@@ -48,7 +46,7 @@ Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-
 </p>
 <div style='text-align:center;'>
 
-figure 2: Graphical user interface for the selection of segmentation parameters. Actions: 1- load an image, 2- improve the discriminative information by applying a light normalization technique, 3- search for the best threshold to binarise the image using the H-minima transform, 4- elements not belonging to the region of interest can be removed from the binarised image, 5- rotate vertically and normalize the spatial position of the growth cone, 6- save the selected parameters.
+figure 2: Graphical user interface for the selection of segmentation parameters. Actions: 1- Load an image, 2- Improve the discriminative information by applying a light normalization technique, 3- Search for the best threshold to binarise the image using the H-minima transform, 4- Elements not belonging to the region of interest can be removed from the binarised image, 5- Rotate vertically and normalize the spatial position of the growth cone, 6- Save the selected parameters.
 </div>
 
 2- __Procesamiento de parametros__:  
@@ -93,7 +91,7 @@ seg_Cone_Morphology/conesSegmentation.m
 * **Muñoz Lasso, DC.** (2017). - *Doctoral Thesis* - Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
 * **Sáenz Gamboa, JJ.** (2017). - *Master Dissertation* - Estudio morfológico en Conos de Crecimiento Mediante Análisis de Componentes Principales Y Modelos Ocultos de Markov. Universitat Politècnica de València.
 
-# References
+## References
 
 <a id="1">[1]</a>  Muñoz Lasso, DC. (2017). Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
 
