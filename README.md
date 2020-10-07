@@ -57,7 +57,7 @@ Los parametros seleccionados en el paso anterior y almacenados en <a href="https
 
 * Run the Image Batch Processor with the following script:
 
-    - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation"> growth_Cones_Segmentation/automaticConesSegmentation.m </a>
+  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation"> growth_Cones_Segmentation/automaticConesSegmentation.m </a>
 
 <p style="text-align:center">
 <img src="./images/IBP.PNG" >
