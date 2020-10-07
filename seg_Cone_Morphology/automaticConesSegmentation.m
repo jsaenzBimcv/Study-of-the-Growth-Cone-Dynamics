@@ -4,7 +4,7 @@ function [BW, BW1] = automaticConesSegmentation(img)
 % config.dat file
 %
 % img      - Input image.
-% RESULTS - Binary image.
+% BW - Binary image.
 
 %--------------------------------------------------------------------------
 

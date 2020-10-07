@@ -47,7 +47,7 @@ end
 % f=@(g)sum(((vecImg.^(1/g))-(vecImgRef(:,:,1))).^2)
 
 f=@(g)sum(sum(((img.^(1/g))-(imgRef(:,:,1))).^2));
-[gamma,fval] = fminbnd(f,0,2);
+[gamma,~] = fminbnd(f,0,2);
 img=im2uint8(mat2gray(img));
 %imgRef=im2uint8(mat2gray(imgRef));
 imgN=imadjust(img,[],[],1/gamma);
