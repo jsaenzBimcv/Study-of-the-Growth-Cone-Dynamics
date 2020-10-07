@@ -32,7 +32,7 @@ figure 1: Diagrama del proceso de análisis morfológico.
 
 
 
-### Time-Lapse Processing
+### Time-Lapse Processing, Segmentación de conos de crecimiento
 
 Utilizando la herramienta <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), se realiza la segmentación y normalización espacial de los conos de crecimiento
 para un lote de imagenes de un Time-Lapse en dos etapas:
@@ -66,6 +66,11 @@ Los parametros seleccionados en el paso anterior y almacenados en <a href="https
 
 figure 3: Segmentación de un Time-Lapse (120 imagenes) utilizando la herramienta <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html"> Image Batch Processor</a> (MathWorks) .
 </div>
+
+When used by the App, this function will be called for every input image
+% file automatically. IM contains the input image as a matrix. RESULTS is a
+% scalar structure containing the results of this processing function.
+
 
 ### Extracción de características 
 
