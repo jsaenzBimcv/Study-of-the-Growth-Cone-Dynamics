@@ -1,4 +1,4 @@
-# Study-of-the-Growth-Cone-Dynamics
+# Study of the Growth Cone Dynamics by Principal Component Analysis
 
 Growth cones are important structures for the formation of the central and peripheral nervous system, and for their maintenance during adulthood. The cones are highly dynamic structures, which travel through the tissues guiding axonal growth until they reach their target tissue.
 The morphology of the growth cone is a parameter that indicates the functionality of the growth cone. This is important because the extent and directionality of the growth cone depends on this functionality[[1]](#1).
