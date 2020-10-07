@@ -19,6 +19,7 @@ El tercer reto, relacionado con el rapido cambio de forma, tamaño y posción re
 ```
 Mathworks Matlab R2019b
 ```
+<a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/data">__Conjunto de datos de ejemplo__</a>
 
 ## Fases del Estudio 
 
@@ -41,7 +42,7 @@ para un lote de imagenes de un Time-Lapse en dos etapas:
 
 * Open your MATLAB and run the the following script:
 
-  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m </a>
+  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation"> growth_Cones_Segmentation/conesSegmentation.m </a>
   
 <p style="text-align:center">
 <img src="./images/gui.PNG" >
@@ -52,11 +53,11 @@ figure 2: Interfaz gráfica de usuario para la selección de parámetros de segm
 </div>
 
 2- __Procesamiento de parametros__:  
-Los parametros seleccionados en el paso anterior y almacenados en <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology/config"> seg_Cone_Morphology/config/config.dat </a>, se utilizan para segmentar un Time-Lapse, en este caso de 120 imágenes.
+Los parametros seleccionados en el paso anterior y almacenados en <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/config"> growth_Cones_Segmentation/config/config.dat </a>, se utilizan para segmentar un Time-Lapse, en este caso de 120 imágenes.
 
 * Run the Image Batch Processor with the following script:
 
-- <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/automaticConesSegmentation.m </a>
+- <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation"> growth_Cones_Segmentation/automaticConesSegmentation.m </a>
 
 <p style="text-align:center">
 <img src="./images/IBP.PNG" >
