@@ -15,8 +15,17 @@ El segundo reto hace referencia a la variabilidad de la forma del cono a menudo 
 
 El tercer reto, relacionado con el rapido cambio de forma, tamaño y posción requiere de muchas muestras (frames). Este hecho tiene una ventaja clara, el manejo de gran cantidad de muestras pretende obtener mejores estimadores de variación de la forma de los conos de crecimiento.
 
-
 ## Fases del Estudio 
+
+<p style="text-align:center">
+<img src="./images/steps.jpg" >
+</p>
+<div style='text-align:center;'>
+
+figure 1: Diagrama del proceso de análisis morfológico.
+</div>
+
+
 
 ### Time-Lapse pre_processing
 
@@ -33,8 +42,10 @@ para un lote de imagenes de un Time-Lapse en dos etapas:
 <img src="./images/gui.PNG" >
 </p>
 <div style='text-align:center;'>
-figure 1: Interfaz gráfica de usuario para la selección de parámetros de segmentación. 1-cargue una imagen, 2- mejore la información discriminativa aplicando una técnica de normalizacion de la luz, 3- búsqueda del mejor umbral para binarizar la imagen utilizando la función H-Min, 4-sí existen elementos que no pertenecen a la región de interés pueden ser eliminadas de la imagen binarizada, 5- Rotar verticalmente y normalizar la posición espacial del cono, 6- guardar los parámetros antes seleccionados.
+
+figure 2: Interfaz gráfica de usuario para la selección de parámetros de segmentación. 1-cargue una imagen, 2- mejore la información discriminativa aplicando una técnica de normalizacion de la luz, 3- búsqueda del mejor umbral para binarizar la imagen utilizando la función H-Min, 4-sí existen elementos que no pertenecen a la región de interés pueden ser eliminadas de la imagen binarizada, 5- Rotar verticalmente y normalizar la posición espacial del cono, 6- guardar los parámetros antes seleccionados.
 </div>
+
 
 
 
