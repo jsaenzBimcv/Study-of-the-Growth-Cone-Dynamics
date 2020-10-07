@@ -51,7 +51,6 @@ para un lote de imagenes de un Time-Lapse en dos etapas:
 figure 2: Interfaz gráfica de usuario para la selección de parámetros de segmentación. 1-cargue una imagen, 2- mejore la información discriminativa aplicando una técnica de normalizacion de la luz, 3- búsqueda del mejor umbral para binarizar la imagen utilizando la función H-Min, 4-sí existen elementos que no pertenecen a la región de interés pueden ser eliminadas de la imagen binarizada, 5- Rotar verticalmente y normalizar la posición espacial del cono, 6- guardar los parámetros seleccionados.
 </div>
 
-
 2- __Procesamiento de parametros__:  
 Los parametros seleccionados en el paso anterior y almacenados en <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology/config"> seg_Cone_Morphology/config/config.dat </a>, se utilizan para segmentar un Time-Lapse, en este caso de 120 imágenes.
 
