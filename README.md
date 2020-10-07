@@ -37,7 +37,7 @@ figure 1: Diagram of the morphological analysis process.
 
 Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), The segmentation and spatial normalization of the growth cones is carried out for a batch of images from a Time-Lapse in two stages:
 
-1- __Parameter settings:__ a graphical user interface (GUI) is provided, which visually allows for segmentation, applying different settings to find the best one.
+1- __Parameter settings:__ a Graphical User Interface (GUI) is provided, which visually allows for segmentation, applying different settings to find the best one.
 
 * Open your MATLAB and run the the following script:
 
@@ -48,11 +48,11 @@ Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-
 </p>
 <div style='text-align:center;'>
 
-figure 2: Interfaz gráfica de usuario para la selección de parámetros de segmentación. 1-cargue una imagen, 2- mejore la información discriminativa aplicando una técnica de normalizacion de la luz, 3- búsqueda del mejor umbral para binarizar la imagen utilizando la función H-Min, 4-sí existen elementos que no pertenecen a la región de interés pueden ser eliminadas de la imagen binarizada, 5- Rotar verticalmente y normalizar la posición espacial del cono, 6- guardar los parámetros seleccionados.
+figure 2: Graphical user interface for the selection of segmentation parameters. Actions: 1- load an image, 2- improve the discriminative information by applying a light normalization technique, 3- search for the best threshold to binarise the image using the H-minima transform, 4- elements not belonging to the region of interest can be removed from the binarised image, 5- rotate vertically and normalize the spatial position of the growth cone, 6- save the selected parameters.
 </div>
 
 2- __Procesamiento de parametros__:  
-Los parametros seleccionados en el paso anterior y almacenados en <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/config"> growth_Cones_Segmentation/config/config.dat </a>, se utilizan para segmentar un Time-Lapse, en este caso de 120 imágenes.
+The parameters selected in the previous step and stored in <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/config"> growth_Cones_Segmentation/config/config.dat </a>, are used to segment a Time-Lapse, in this case from 120 images.
 
 * Run the Image Batch Processor with the following script:
 
@@ -63,29 +63,24 @@ Los parametros seleccionados en el paso anterior y almacenados en <a href="https
 </p>
 <div style='text-align:center;'>
 
-figure 3: Segmentación de un Time-Lapse (120 imagenes) utilizando la herramienta <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html"> Image Batch Processor</a> (MathWorks) .
+figure 3: Segmentation of a Time-Lapse (120 images) using the <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html"> Image Batch Processor</a> (MathWorks) .
 </div>
 
-When used by the App, this function will be called for every input image
-% file automatically. IM contains the input image as a matrix. RESULTS is a
-% scalar structure containing the results of this processing function.
+### Feature Extraction  
 
+The technique used for the extraction of information concerning the shape of the object (based on contours), is the __Eigenshape Analysis__.
+Eigenshape uses the coordinate data (X,Y) of the contour of the growth cone as a vector that describes the shape. However, the list of coordinates that represent the contour of the cone, cannot be immediately compared with another contour, these points are not spaced in the same way, so it is necessary to create a new set that is evenly spaced along the same curve.
 
-### Extracción de características 
-
-La técnica utilizada para la extracción de información referente a la forma del objeto (basada en contornos), es el __análisis Eigenshape__.
-Eigenshape utiliza los datos de coordenadas (X,Y) del contorno del cono de crecimiento como un vector que describe la forma. Sin embargo, la lista de coordenadas que representan el contorno del cono, no se pueden comparar inmediatamente con otro contorno, estos puntos no estan espaciados de la misma manera, por lo que es necesario crear un nuevo conjunto que esté espaciado uniformemente a lo largo de la misma curva.
-
-Para esto es necesario interpolar el conjunto de puntos a distancias fijas a lo largo de la curva en el espacio (2D) que forma el contorno. El método utilizado para calcular los puntos a lo largo de la curva, fue la interpolación cubica de Hermite a trozos (calculados usando pchip en Matlab (MathWorks, s.f.)). 
+For this, it is necessary to interpolate the set of points at fixed distances along the curve in the space (2D) that forms the contour. The method used to calculate the points along the curve was the Piecewise Cubic Hermite Interpolating (calculated using pchip in Matlab (MathWorks)). 
 
 * Open your MATLAB and run the following script:
 ```
-seg_Cone_Morphology/conesSegmentation.m
+growth_Cones_Segmentation/conesSegmentation.m
 ```
 
-### Análisis de componentes principales 
+### Principal Component Analysis (PCA) 
 
-El conjunto de coordenadas debe reducirse a una forma comprensible (de baja dimensión), para ello, la herramienta utilizada es el análisis de componentes principales (PCA). De esta forma, es posible mostrar los conos de crecimiento como puntos en un diagrama de dispersion bidimensional o tridimensional sin perder mucha información, indicando las principales direcciones de variación de la forma dentro de la muestra.
+The set of coordinates must be reduced to a comprehensible form (low dimension), for which the tool used is the Principal Component Analysis (PCA). In this way, it is possible to show the growth cones as points in a two- or three-dimensional scatter diagram without losing much information, indicating the main directions of shape variation within the sample.
 
 * Open your MATLAB and run the following script:
 ```
@@ -106,19 +101,9 @@ seg_Cone_Morphology/conesSegmentation.m
 
 <a id="3">[3]</a>  Goodhill, G. J., Faville, R. A., Sutherland, D. J., Bicknell, B. A., Thompson, A. W., Pujic, Z., ... & Scott, E. K. (2015). The dynamics of growth cone morphology. BMC biology, 13(1), 10.
 
-## License
-
-The Study-of-the-Growth-Cone-Dynamics is free and open source for academic/research purposes (non-commercial)¹.
-
-¹ Some algorithms of the Study-of-the-Growth-Cone-Dynamics are free for commercial purposes and others not. First you need to contact the authors of your desired algorithm and check with them the appropriate license.
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-
  ## Rights and permissions.
 
  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>., which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder.
-
 
 ## Acknowledgments
 
@@ -128,5 +113,3 @@ Researcher: __Dr. Diana Carolina Muñoz Lasso__, Universitat Politècnica de Val
 In collaboration with: 
 * <a href="https://www.uv.es/ciberer2/index.wiki">Laboratorio de Fisiopatología de las Enfermedades Raras</a>, Universitat de València
 * <a href="http://www.cipf.es/cipf-fisabio-joint-research-unit-biomedical-imaging">Biomedical Imaging Mixed Joint Unit, Foundation for the Promotion of Health and Biomedical Research (FISABIO) and the Principe Felipe Research Center (CIPF), València, Spain.</a>
-
-
