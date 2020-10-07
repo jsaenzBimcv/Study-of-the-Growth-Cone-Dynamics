@@ -15,6 +15,11 @@ El segundo reto hace referencia a la variabilidad de la forma del cono a menudo 
 
 El tercer reto, relacionado con el rapido cambio de forma, tamaño y posción requiere de muchas muestras (frames). Este hecho tiene una ventaja clara, el manejo de gran cantidad de muestras pretende obtener mejores estimadores de variación de la forma de los conos de crecimiento.
 
+### Prerequisites
+```
+Mathworks Matlab R2019b
+```
+
 ## Fases del Estudio 
 
 <p style="text-align:center">
@@ -47,17 +52,15 @@ figure 2: Interfaz gráfica de usuario para la selección de parámetros de segm
 </div>
 
 
-2- __Procesamiento de parametros__:  Los parametros seleccionados en el paso anterior y almacenados en:
-- <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/seg_Cone_Morphology/config"> seg_Cone_Morphology/config/config.dat </a> 
-
-se utilizan para segmentar un Time-Lapse, en este caso de 120 imágenes.
+2- __Procesamiento de parametros__:  
+Los parametros seleccionados en el paso anterior y almacenados en <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology/config"> seg_Cone_Morphology/config/config.dat </a>, se utilizan para segmentar un Time-Lapse, en este caso de 120 imágenes.
 
 * Run the Image Batch Processor with the following script:
 
-- <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/conesSegmentation.m </a>
+- <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/seg_Cone_Morphology"> seg_Cone_Morphology/automaticConesSegmentation.m </a>
 
 <p style="text-align:center">
-<img src="./images/gui.PNG" >
+<img src="./images/IBP.PNG" >
 </p>
 <div style='text-align:center;'>
 
@@ -75,7 +78,8 @@ Para esto es necesario interpolar el conjunto de puntos a distancias fijas a lo 
 ```
 seg_Cone_Morphology/conesSegmentation.m
 ```
- ### Análisis de componentes principales 
+
+### Análisis de componentes principales 
 
 El conjunto de coordenadas debe reducirse a una forma comprensible (de baja dimensión), para ello, la herramienta utilizada es el análisis de componentes principales (PCA). De esta forma, es posible mostrar los conos de crecimiento como puntos en un diagrama de dispersion bidimensional o tridimensional sin perder mucha información, indicando las principales direcciones de variación de la forma dentro de la muestra.
 
@@ -84,13 +88,6 @@ El conjunto de coordenadas debe reducirse a una forma comprensible (de baja dime
 seg_Cone_Morphology/conesSegmentation.m
 ```
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-conesSegmentation.m
-```
 
 ## Authors
 

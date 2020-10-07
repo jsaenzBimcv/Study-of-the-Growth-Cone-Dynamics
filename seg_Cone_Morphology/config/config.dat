@@ -1,2 +1,2 @@
 search thr thrNorm Normalización                  img_ref                                          false_Pos                       dir_Mask                                         width   height    angle       xo       yo
-1 0.0238 0.177 0.496    5 E:\cloudstorage\GitHub\Study-of-the-Growth-Cone-Dynamics\seg_Cone_Morphology\img_Ref\img_Ref-1.tif     0                                               none      400      400   28.485  397.000  904.000
+0 0.0238 0.300 0.500    1            none     1 E:\cloudstorage\GitHub\Study-of-the-Growth-Cone-Dynamics\seg_Cone_Morphology\config\Mask.tif      400      400   30.964  369.000  897.000
