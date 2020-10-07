@@ -1,44 +1,43 @@
 # Study-of-the-Growth-Cone-Dynamics
 
-Los conos de crecimiento son estructuras importantes para la formación del sistema nervioso central y periférico, y para su mantenimiento durante la edad adulta. Los conos son estructuras altamente dinámicas, que viajan a través de los tejidos guiando el crecimiento axonal hasta alcanzar su tejido blanco.
-La morfología del cono de crecimiento es un parámetro que nos indica la funcionalidad del cono de crecimiento. Esto es importante porque la extensión y la direccionalidad del cono de crecimiento dependen de esta funcionalidad.[[1]](#1)
+Growth cones are important structures for the formation of the central and peripheral nervous system, and for their maintenance during adulthood. The cones are highly dynamic structures, which travel through the tissues guiding axonal growth until they reach their target tissue.
+The morphology of the growth cone is a parameter that indicates the functionality of the growth cone. This is important because the extent and directionality of the growth cone depends on this functionality[[1]](#1).
 
-Estudiar la morfometría geométrica en los movimientos de los conos de crecimiento, requiere abordar tres retos:
+Studying geometric morphometry in the movements of growth cones requires addressing three challenges:
 
-* Los límites difusos de los conos de crecimiento.
-* La falta de puntos de referencia anatómicos.
-* Alta dinámica de cambio en los patrones de crecimiento en el tiempo. 
+* The diffuse limits of the growth cones
+* The lack of anatomical reference points.
+* High dynamics of change in growth patterns over time.  
 
-A diferencia de otras estructuras anatómicas, el contorno de los conos de crecimiento puede no estar definido claramente, incluso en aquellos conos que presentan en un inicio, límites claramente definidos, pasará normalmente que a través de las fases de desarrollo sus límites sean difusos, podría elegirse un valor umbral para definir los límites del cono, pero la decisión de un nivel umbral arbitrario podría descartar información espacial valiosa del patrón, adicionalmente en el estudio temporal se presentan fuertes cambios de iluminación y ruido producto de otros elementos presentes en el medio que pueden ocluir secciones del cono de crecimiento. Por los interiores motivos, se deben de mejorar las imágenes para aumentar la información discriminativa incluida y asegurar que los factores antes mensionados no puedan influir de manera negativa en la extracción de características. 
+Unlike other anatomical structures, the contour of the growth cones may not be clearly defined, even in those cones that initially have clearly defined boundaries, it will happen that, through the phases of development their limits are diffuse, a threshold value could be chosen to define the limits of the cone, but the decision of an arbitrary threshold level could rule out valuable spatial information of the pattern, additionally, in a time-lapse there are strong changes between images, ranging from lighting changes to noise caused by other elements present in the medium that can occlude sections of the growth cone.  For the above reasons, it is essential to apply strategies that improve the images and thus increase the discriminatory information included and ensure that the factors mentioned above cannot negatively influence the extraction of characteristics. 
 
-El segundo reto hace referencia a la variabilidad de la forma del cono a menudo carente de puntos de referencia biologicos que permitan la comparación entre individuos. En este sentido, se puede representar la forma del cono de crecimiento separnadolo del fondo de la imagen (segmentación) como una nueva imagen binaria o máscara y de está manera a plicarla a mas de dos dimensiones (por ejemplo, la forma 2D + tiempo). No obstante, en un estudio temporal existe una alta correlación entre conos (pixeles redundantes), convirtiendose en un inconveniente para el análisis estadístico. Una extrategia para abordar este reto es, el análisis eigenshape descrito por MacLeod et al.[[2]](#2) y aplicado para el caso de growth cone por Goodhill et al. [[3]](#3). EL metodo eigenshape, representa la forma mediante las coordenadas (x,y) de un conjunto de puntos de referencia, colocados alrededor del perímetro del cono y seleccionados de tal manera que no dependan de la orientación específica del cono (“invariante a la rotación”), o bien alineando la población de modo que las regiones semejantes se encuentren en ubicaciones espaciales correspondientes. Los nuevos pares de coordenadas generados corresponden a un vector de números que representan cada contorno como un punto en un espacio de N dimensiones, luego de ésto, se aplica “Análisis de Componentes Principales” (PCA) para obtener las direcciones en el espacio de forma que capturan la mayor proporción de varianza [[3]](#3). 
+The second challenge concerns the variability of the cone shape, often lacking biological reference points to allow comparison between individuals. In this sense, the shape of the growth cone can be represented by separating it from the background of the image (segmentation) as a new binary image or mask and thus applying it to more than two dimensions (e.g. 2D shape + time). However, in a temporal study there is a high correlation between cones (redundant pixels), becoming a drawback for statistical analysis. One strategy to address this challenge is, __The Eigenshape Analysis__ described by MacLeod et al. [[2]](#2) and applied for the growth cone case by Goodhill et al. [[3]](#3). The Eigenshape Analysis represents the shape by means of the coordinates (x, y) of a set of reference points, placed around the perimeter of the cone and selected in such a way that they do not depend on the specific orientation of the cone ("invariant to rotation"), or by aligning the population so that similar regions are found in corresponding spatial locations. The new pairs of coordinates generated correspond to a vector of numbers that represent each contour as a point in N dimensional space, after this, __Principal Component Analysis__ (PCA) is used to obtain the directions in space in a way that captures the greatest proportion of variance [[3]](#3). 
 
-El tercer reto, relacionado con el rapido cambio de forma, tamaño y posción requiere de muchas muestras (frames). Este hecho tiene una ventaja clara, el manejo de gran cantidad de muestras pretende obtener mejores estimadores de variación de la forma de los conos de crecimiento.
+The third challenge, related to the rapid change of shape, size and position requires many samples (frames). This fact has a clear advantage, the handling of large numbers of samples aims to obtain better estimates of the variation in the shape of the growth cones.
 
 ### Prerequisites
 ```
 Mathworks Matlab R2019b
 ```
-<a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/data">__Conjunto de datos de ejemplo__</a>
+<a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/data">__Example data set__</a>
 
-## Fases del Estudio 
+## Phases of the Study 
 
 <p style="text-align:center">
 <img src="./images/steps.jpg" >
 </p>
 <div style='text-align:center;'>
 
-figure 1: Diagrama del proceso de análisis morfológico.
+figure 1: Diagram of the morphological analysis process.
 </div>
 
 
 
-### Time-Lapse Processing, Segmentación de conos de crecimiento
+### Time-Lapse Processing, Growth Cone Segmentation
 
-Utilizando la herramienta <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), se realiza la segmentación y normalización espacial de los conos de crecimiento
-para un lote de imagenes de un Time-Lapse en dos etapas:
+Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), The segmentation and spatial normalization of the growth cones is carried out for a batch of images from a Time-Lapse in two stages:
 
-1- __Configuración de parametros:__ se proporciona una interfaz gráfica de usuario (GUI), que permite visualmente realizar la segmentación al aplicar diferentes configuraciones con el objetivo de buscar la mejor segmentación.
+1- __Parameter settings:__ a graphical user interface (GUI) is provided, which visually allows for segmentation, applying different settings to find the best one.
 
 * Open your MATLAB and run the the following script:
 
