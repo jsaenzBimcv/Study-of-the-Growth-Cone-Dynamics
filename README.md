@@ -23,6 +23,8 @@ Mathworks Matlab R2019b
 
 ## Phases of the Study 
 
+In figure 1. You can see, a schematic with the steps involved in the Eigenshape Analysis to extract the shape dimensions that capture most variance: 1. Growth cone segmentation procedure, 2. Feature extraction, from 250 evenly spaced contour coordinates, 3. Principal component analysis, Graphic representation of the components with the highest variance.
+
 <p style="text-align:center">
 <img src="./images/steps.jpg" >
 </p>
@@ -31,7 +33,7 @@ Mathworks Matlab R2019b
 figure 1: Diagram of the morphological analysis process.
 </div>
 
-### Time-Lapse Processing, Growth Cone Segmentation
+### 1. Time-Lapse Processing, Growth Cone Segmentation
 
 Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html">__Image Batch Processor__</a> (MathWorks), The segmentation and spatial normalization of the growth cones is carried out for a batch of images from a Time-Lapse in two stages:
 
@@ -64,7 +66,7 @@ The parameters selected in the previous step and stored in <a href="https://gith
 figure 3: Segmentation of a Time-Lapse (120 images) using the <a href="https://www.mathworks.com/help/images/batch-processing-using-the-image-batch-processor-app.html"> Image Batch Processor</a> (MathWorks) .
 </div>
 
-### Feature Extraction  
+### 2. Feature Extraction  
 
 The technique used for the extraction of information concerning the shape of the object (based on contours), is the __Eigenshape Analysis__.
 Eigenshape uses the coordinate data (X,Y) of the contour of the growth cone as a vector that describes the shape. However, the list of coordinates that represent the contour of the cone, cannot be immediately compared with another contour, these points are not spaced in the same way, so it is necessary to create a new set that is evenly spaced along the same curve.
@@ -116,7 +118,7 @@ figure 4: Example of positioning of reference points in the frames 24 and 120.
 </div>
 
 
-### Principal Component Analysis (PCA) 
+### 3. Principal Component Analysis (PCA) 
 
 The set of coordinates must be reduced to a comprehensible form (low dimension), for which the tool used is the Principal Component Analysis (PCA). In this way, it is possible to show the growth cones as points in a two- or three-dimensional scatter diagram without losing much information, indicating the main directions of shape variation within the sample.
 
