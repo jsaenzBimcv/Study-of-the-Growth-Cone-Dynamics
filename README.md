@@ -19,7 +19,7 @@ The third challenge, related to the rapid change of shape, size and position req
 ```
 Mathworks Matlab R2019b
 ```
-<a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/data">__Example data set__</a>
+<a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data">__Example data set__</a>
 
 ## Phases of the Study 
 
@@ -39,7 +39,7 @@ Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-
 
 * Open your MATLAB and run the the following script:
 
-  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation"> growth_Cones_Segmentation/conesSegmentation.m </a>
+  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/1-Growth_Cones_Segmentation"> 1-Growth_Cones_Segmentation/conesSegmentation.m </a>
   
 <p style="text-align:center">
 <img src="./images/gui.PNG" >
@@ -50,11 +50,11 @@ figure 2: Graphical user interface for the selection of segmentation parameters.
 </div>
 
 2- __Procesamiento de parametros__:  
-The parameters selected in the previous step and stored in <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation/config"> growth_Cones_Segmentation/config/config.dat </a>, are used to segment a Time-Lapse, in this case from 120 images.
+The parameters selected in the previous step and stored in <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/1-Growth_Cones_Segmentation/config"> 1-Growth_Cones_Segmentation/config/config.dat </a>, are used to segment a Time-Lapse, in this case from 120 images.
 
 * Run the Image Batch Processor with the following script:
 
-  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/growth_Cones_Segmentation"> growth_Cones_Segmentation/automaticConesSegmentation.m </a>
+  - <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/1-Growth_Cones_Segmentation"> 1-Growth_Cones_Segmentation/automaticConesSegmentation.m </a>
 
 <p style="text-align:center">
 <img src="./images/IBP.PNG" >
@@ -73,8 +73,39 @@ For this, it is necessary to interpolate the set of points at fixed distances al
 
 * Open your MATLAB and run the following script:
 ```
-growth_Cones_Segmentation/conesSegmentation.m
+2-Feature_Extraction/batch_Feature_Extraction.m
 ```
+batch_Feature_Extraction.m, organizes the study classes and extracts the coordinates (x,y) of the contours from the binary images chosen in the previous step. 
+When starting the script you must indicate the directory with the segmentations, which, must be organized as follows:
+<div>
+<pre>
+<code>
+Segmentation_Data/
+├── class-01
+│  ├──  cone-01
+│  │   ├── frame-000.tif
+│  │   ├── frame-001.tif
+│  │   ├── ...
+│  │   ├── frame-119.tif
+│  ├──  cone-02
+│  ├──  ...
+│
+├── class-02
+│  ├──  cone-01
+│  │   ├── frame-000.tif
+│  │   ├── frame-001.tif
+│  │   ├── ...
+│  │   ├── frame-119.tif
+│  ├──  cone-02
+│  ├──  ...
+
+</code>
+</pre>
+</div>
+In <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data/segmentation_output/E_2m">__data/segmentation_output/E_2m__</a> you can see an example of the directory.
+
+When finished, a new folder (/data) is generated with a coordinate file for each Time-lapse, the file name is coded as follows __contours_nameClass_nameCone.m__.
+contours_nameClass_nameCone.m contains a matrix of size (X coordinates + Y coordinates) x frames, for this case 500x120. 
 
 ### Principal Component Analysis (PCA) 
 
