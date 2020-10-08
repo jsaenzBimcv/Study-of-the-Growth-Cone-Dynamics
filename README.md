@@ -102,9 +102,10 @@ Segmentation_Data/
 </code>
 </pre>
 </div>
-In <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data/segmentation_output/E_2m">__data/segmentation_output/E_2m__</a> you can see an example of the directory.
+In <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data/segmentation_output/E_2m">data/segmentation_output/E_2m</a> you can see an example of the directory.
 
 When finished, a new folder (/data) is generated with a coordinate file for each Time-lapse, the file name is coded as follows __contours_nameClass_nameCone.m__.
+
 contours_nameClass_nameCone.m contains a matrix of size (X coordinates + Y coordinates) x frames, for this case 500x120. 
 
 ### Principal Component Analysis (PCA) 
