@@ -49,7 +49,7 @@ Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-
 figure 2: Graphical user interface for the selection of segmentation parameters. Actions: 1- Load an image, 2- Improve the discriminative information by applying a light normalization technique, 3- Search for the best threshold to binarise the image using the H-minima transform, 4- Elements not belonging to the region of interest can be removed from the binarised image, 5- Rotate vertically and normalize the spatial position of the growth cone, 6- Save the selected parameters.
 </div>
 
-2- __Procesamiento de parametros__:  
+2- __Parameter Processing__:  
 The parameters selected in the previous step and stored in <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/1-Growth_Cones_Segmentation/config"> 1-Growth_Cones_Segmentation/config/config.dat </a>, are used to segment a Time-Lapse, in this case from 120 images.
 
 * Run the Image Batch Processor with the following script:
@@ -75,7 +75,7 @@ For this, it is necessary to interpolate the set of points at fixed distances al
 ```
 2-Feature_Extraction/batch_Feature_Extraction.m
 ```
-batch_Feature_Extraction.m, organizes the study classes and extracts the coordinates (x,y) of the contours from the binary images chosen in the previous step. 
+The funtion __batch_Feature_Extraction.m__, organizes the study classes and extracts the coordinates (x,y) of the contours from the binary images chosen in the previous step. 
 When starting the script you must indicate the directory with the segmentations, which, must be organized as follows:
 <div>
 <pre>
@@ -98,15 +98,23 @@ Segmentation_Data/
 │  │   ├── frame-119.tif
 │  ├──  cone-02
 │  ├──  ...
-
 </code>
 </pre>
 </div>
+
 In <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data/segmentation_output/E_2m">data/segmentation_output/E_2m</a> you can see an example of the directory.
 
 When finished, a new folder (/data) is generated with a coordinate file for each Time-lapse, the file name is coded as follows __contours_nameClass_nameCone.m__.
 
-contours_nameClass_nameCone.m contains a matrix of size (X coordinates + Y coordinates) x frames, for this case 500x120. 
+contours_nameClass_nameCone.m contains a matrix of size (X coordinates + Y coordinates) x frames, for this case 500x120, It is equivalent to 250 equidistant points in a 120-frame time-lapse. 
+
+<p style="text-align:center">
+<img src="./images/example_coord.png" >
+</p>
+<div style='text-align:center;'>
+figure 4: Example of positioning of reference points in the frames 24 and 120.
+</div>
+
 
 ### Principal Component Analysis (PCA) 
 
