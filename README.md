@@ -110,8 +110,8 @@ When finished, a new folder (/data) is generated with a coordinate file for each
 
 contours_nameClass_nameCone.mat contains a matrix of size (X coordinates + Y coordinates) x frames, for this case 500x120, It is equivalent to 250 equidistant points in a 120-frame time-lapse. 
 
-<p style="text-align:center">
-<img src="./images/example_coord.png" width="550" height="450" align="middle"/>
+<p>
+<img src="./images/example_coord.png" width="550" height="450" align="middle">
 </p>
 <div style='text-align:center;'>
 figure 4: Example of positioning of reference points in the frames 24 and 120.
