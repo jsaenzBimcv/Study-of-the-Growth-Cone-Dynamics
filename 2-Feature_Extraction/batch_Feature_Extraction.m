@@ -56,7 +56,7 @@ names=[];
 cont=0;
 %% create data directory
 % create the paths for folders and output files
-FolderName = '\data';
+FolderName = '\extracted_features';
 PathFolder = [cpath FolderName];
 mkdir(PathFolder);
 cd (PathFolder);
