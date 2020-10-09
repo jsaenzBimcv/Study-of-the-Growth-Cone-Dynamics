@@ -26,7 +26,7 @@ Mathworks Matlab R2019b
 In figure 1. You can see, a schematic with the steps involved in the Eigenshape Analysis to extract the shape dimensions that capture most variance: 1. Growth cone segmentation procedure, 2. Feature extraction, from 250 evenly spaced contour coordinates, 3. Principal component analysis, Graphic representation of the components with the highest variance.
 
 <center>
-<img src="./images/eigenshape_steps.png" >
+<img src="./images/eigenshape_steps.png" align="middle">
 </center>
 <div style='text-align:center;'>
 
