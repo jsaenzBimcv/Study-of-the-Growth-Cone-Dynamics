@@ -1,7 +1,7 @@
 # Study of the Growth Cone Dynamics by Principal Component Analysis
 
 Growth cones are important structures for the formation of the central and peripheral nervous system, and for their maintenance during adulthood. The cones are highly dynamic structures, which travel through the tissues guiding axonal growth until they reach their target tissue.
-The morphology of the growth cone is a parameter that indicates the functionality of the growth cone. This is important because the extent and directionality of the growth cone depends on this functionality[[1]](#1).
+The morphology of the growth cone is a parameter that indicates the functionality of the growth cone. This is important because the extent and directionality of the growth cone depends on this functionality [[1]](#1).
 
 Studying geometric morphometry in the movements of growth cones requires addressing three challenges:
 
@@ -47,7 +47,7 @@ Using the tool  <a href="https://www.mathworks.com/help/images/batch-processing-
 </p>
 <div style='text-align:center;'>
 
-figure 2: Graphical user interface for the selection of segmentation parameters. Actions: 1- Load an image, 2- Improve the discriminative information by applying a light normalization technique, 3- Search for the best threshold to binarise the image using the H-minima transform, 4- Elements not belonging to the region of interest can be removed from the binarised image, 5- Rotate vertically and normalize the spatial position of the growth cone, 6- Save the selected parameters.
+figure 2: Graphical user interface for the selection of segmentation parameters. Actions: 1- Load an image, 2- Improve the discriminative information by applying a light normalization technique, 3- Search for the best threshold to binarise the image using the H-minima transform [[4]](#4), 4- Elements not belonging to the region of interest can be removed from the binarised image, 5- Rotate vertically and normalize the spatial position of the growth cone, 6- Save the selected parameters.
 </div>
 
 2- __Parameter Processing__:  
@@ -70,7 +70,7 @@ figure 3: Segmentation of a Time-Lapse (120 images) using the <a href="https://w
 The technique used for the extraction of information concerning the shape of the object (based on contours), is the __Eigenshape Analysis__.
 Eigenshape uses the coordinate data (X,Y) of the contour of the growth cone as a vector that describes the shape. However, the list of coordinates that represent the contour of the cone, cannot be immediately compared with another contour, these points are not spaced in the same way, so it is necessary to create a new set that is evenly spaced along the same curve.
 
-For this, it is necessary to interpolate the set of points at fixed distances along the curve in the space (2D) that forms the contour. The method used to calculate the points along the curve was the Piecewise Cubic Hermite Interpolating (calculated using pchip in Matlab (MathWorks)). 
+For this, it is necessary to interpolate the set of points at fixed distances along the curve in the space (2D) that forms the contour. The method used to calculate the points along the curve was the Piecewise Cubic Hermite Interpolation [[5]](#5) (calculated using pchip in Matlab (MathWorks)). 
 
 * Open your MATLAB and run the following script:
 ```
@@ -118,7 +118,7 @@ figure 4: Example of positioning of reference points in the frames 24 and 120.
 </div>
 
 
-### 3. Principal Component Analysis (PCA) 
+### 3. Dimensionality Reduction, Principal Component Analysis (PCA) 
 
 The set of coordinates must be reduced to a comprehensible form (low dimension), for which the tool used is the Principal Component Analysis (PCA). In this way, it is possible to show the growth cones as points in a two- or three-dimensional scatter diagram without losing much information, indicating the main directions of shape variation within the sample.
 
@@ -151,6 +151,10 @@ figure 5: Screeplot of explained and accumulated variance by component and By-pl
 <a id="2">[2]</a>  MacLeod, N. (1999). Generalizing and extending the eigenshape method of shape space visualization and analysis. Paleobiology, 107-138.
 
 <a id="3">[3]</a>  Goodhill, G. J., Faville, R. A., Sutherland, D. J., Bicknell, B. A., Thompson, A. W., Pujic, Z., ... & Scott, E. K. (2015). The dynamics of growth cone morphology. BMC biology, 13(1), 10.
+
+<a id="4">[4]</a>  Zaini, T. R. M., Jaafar, M., & Pin, N. C. (2016). H-minima transform for segmentation of structured surface. In MATEC Web of Conferences (Vol. 74, p. 00025). EDP Sciences.
+
+<a id="5">[5]</a>   Fritsch, F. N., & Carlson, R. E. (1980). Monotone piecewise cubic interpolation. SIAM Journal on Numerical Analysis, 17(2), 238-246.
 
 ## Rights and permissions.
 
