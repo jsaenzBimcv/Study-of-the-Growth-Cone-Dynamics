@@ -1,22 +1,23 @@
 function [ wf_reorder ] = reorder_coordinates (wf)
 %reorder_coordinates 
-%   Reordena las coordenadas con relacion al punto mas lejano en el eje y,
-%   las coordenadas pordefecto estan ancladas al primer punto mas cercano
-%   en y, lo cual es un problema en una serie temporal, ya que en un
-%   principio el pto de ref es uno y en cualquier momento disminuye el
-%   valor de otro pto convirtiendose en el nuevo pto, lo que no es real
-%   tener en cuenta que las filas son las coordenadas ordenadas la primera
-%   mitad X y la siguiente Y
-%   columnas, observaciones
+% Reorders the coordinates relative to the farthest point on the axis and, 
+% by default, the coordinates are anchored to the first point closest to y, 
+% which is a problem in a time series, since at first the reference point 
+% is one and at any time the value of another point decreases, 
+% becoming the new starting point, which becomes an error.  
+% Note that the rows are the ordered coordinates the first half X and 
+% the next half Y columns, remarks
+
 [nObs, nCoord]=size(wf);
 wf_reorder = zeros(size(wf));
 for i=1:nObs
     [~, indice] = max(wf(i,nCoord/2+1:nCoord));
     wf_reorder(i,:)=[wf(i,indice:nCoord/2), wf(i,1:indice-1),...
         wf(i,indice+nCoord/2+1:nCoord), wf(i,nCoord/2+1:indice+nCoord/2)];
-     mover=wf_reorder(i,1:nCoord/2); % mover todas las x a 0, restando el valor de x1 a toda la fila x
-     d=mover(1,1);
-     mover=mover(1,1:nCoord/2)-d;
-     wf_reorder(i,1:nCoord/2)=mover(1,1:nCoord/2);
+    % move all x to 0, subtracting the value of x1 from the whole row x
+    mover=wf_reorder(i,1:nCoord/2);
+    d=mover(1,1);
+    mover=mover(1,1:nCoord/2)-d;
+    wf_reorder(i,1:nCoord/2)=mover(1,1:nCoord/2);
 end
 

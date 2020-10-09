@@ -1,32 +1,40 @@
 function [ imgIxJdim, dataCones,contours ,names ] = listImgInDir( path,N)
-%revisa en una carpeta si hay archivos .tif para luego crear una matriz con
-%ellos y listarlos
-% las imagenes representen la serie temporal del crecimiento de los conos
-% neuronales
-%VARIABLES:   Entrada: Directorio padre de las imagenes
-%          Salida:
-%               imgIxJdim   Matriz, columnas con las imágenes binarias de Alto*ancho(I*J)dimensiones
-%               dataCones   Vector, que almacena'Perimeter', 'area', 'Orientation',
-%                           'Centroid','BoundingBox', por cada cono (imagen).
-%               countours   Matriz, columnas con las coordenadas X,Y de N
-%                           puntos equidistantes en el contorno del cono, la columna es
-%                           de tamaño X*Y
-%               names       vector columna con los nombres de la imagenes
-%                           encontradas
-%          Nota:
+% Lists binary images with a .tif extension contained in a directory.  
+% The images represent the time series of the movement of a growth cone. 
+% The aim is to extract the morphometric characteristics from 
+% the coordinates obtained from a set of equidistant points around 
+% the contour of the growth cone.
+% To study a population of growth cones it is required that the reference 
+% points obtained from the contour are all located in a common point. 
+% The base of the cone is taken as the initial point and the rest of 
+% the points are numbered clockwise until a closed curve 
+% of 250 equidistant points is completed.   
+
+% VARIABLES: 
+%   Input: 
+%       path  -     Image parent directory
+%       N     -     Number of equidistant points 
+%  Outputs:
+%       imgIxJdim -  Matrix, columns with the binary images of 
+%                    Height*Width(I*J)dimensions
+%       dataCones -  Vector data, which stores 
+%                    'Perimeter', 'area', 'Orientation',
+%                    'Centroid', 'BoundingBox', per cone (image).
+%       countours -  Matrix, columns with the X,Y coordinates of N
+%                    Equidistant points on the cone contour, 
+%                    the column is of size X+Y
+%       names     -  vector column with the names of the image found
 %__________________________________________
-% HISTORIAL:                                                           %
-%       +Fecha de realizacion: revisado 18-Nov-2016 14:54:13                         %
-%       +Autor: Saenz Jhon J
-%       +Version: 1.0                                                  %
-%       +Cambios: -                                                    %
-%       +Descripcion de los cambios:
-% ojo evaluar si se requiere comprobar la existencia de objetos
-% pequeños, se podría evitar este paso.
-%_______________________________________________________________________________
+%   HISTORY: 
+%   Date: revised 18-Nov-2016 14:54:13
+%   Author: Sáenz Jhon J
+%   Version: 1.0
+%   Changes: 
+%   Description of the changes:
+%_______________ __________________________________________________________
 %%
 if ~exist('N','var')
-    N = 250; % puntos equidistantes en el contorno
+    N = 250; % Number of equidistant points
 end
 
 dataCones = [];
@@ -40,8 +48,8 @@ lista = dir('*.tif*');
 [n,~] = size(lista);
 if isequal(n,0)
 %         msgbox(...
-%             'No hay ninguna imagen en la carpeta especificada',...
-%             'MENSAJE',...
+%             'There is no image in the specified folder',...
+%             'Message',...
 %             'help')
     cd(dirTemp)
     return
@@ -58,15 +66,15 @@ for i = 1:n
     if islogical(img)
         img = not(img(:,:,1));
     else
-        img = not(im2bw(img(:,:,1)));
+        img = not(imbinarize(img(:,:,1)));
     end
     [I,J] = size(img);
-    %% Limpiar la imagen de pequeños objetos, me quedo con el de mayor tamaño
-    % Etiquetar elementos conectados
-    [L Ne] = bwlabel(img,8);
-    % Calcular las propiedades de los objetos en la imagen
+    %% Cleaning up the image of small objects, I stick with the biggest
+    % Label connected elements
+    [L, ~] = bwlabel(img,8);
+    % Calculate the properties of the objects in the image
     property = regionprops(L,'basic');
-    %  busca una área especifica
+    %  search for a specific area
     s=max([property.Area]);%
     m=find([property.Area]<s);
     Mask =zeros(size(L));
@@ -76,7 +84,7 @@ for i = 1:n
         Mask = Mask + (L==(m(j)));
     end
     img = not(img);
-    % verificar el tamaño de la imagen
+    % check image size
     if (I ~= size(img,1))
         img(end,:) =[];
     end
@@ -85,35 +93,39 @@ for i = 1:n
     end
     imgInDir{i} = img;
     
-    %% transforma la imagen en un vector columna
+    %% transforms the image into a column vector
     imgIxJdim(:,i)=reshape(imgInDir{i},(I*J),1);
-    %% obtener el contorno
-    nlevels = 1;
+    %% get the contour
+    
     [xsize,ysize]=size(img);
     xv = (1:xsize)-(xsize/2);
     yv = (1:ysize)-(ysize/2);
-    [x y] = meshgrid(xv,yv);
-    % buscando el perimetro
+    
+    % searching the perimeter
     bounds = cell(0);
     for t = unique(img(:))'
-        bounds{end+1} = bwperimtrace(img == t,[xv(1) xv(end)],[yv(1) yv(end)]);
+        bounds{end+1} = bwperimtrace(img == t,...
+            [xv(1) xv(end)],[yv(1) yv(end)]); %#ok<*AGROW>
     end
-    % -----coordenadas obtenidas del perimetro del cono--------------
+    % ----- coordinates obtained from the perimeter of the cone -----------
     rawCoordinates = bounds; %
-    xx=rawCoordinates{1, 1}{1, 1}(:,1); % coordenadas en el eje x
-    yy=rawCoordinates{1, 1}{1, 1}(:,2); % coordenadas en el eje y
+    xx=rawCoordinates{1, 1}{1, 1}(:,1); % x-axis coordinates
+    yy=rawCoordinates{1, 1}{1, 1}(:,2); % y-axis coordinates
     % -----perimetro del cono
-    dataCone  = regionprops(~img,'Perimeter','area','Orientation','Centroid','BoundingBox');
+    dataCone  = regionprops(~img,'Perimeter','area','Orientation', ...
+        'Centroid','BoundingBox');
     dataCones{i}= dataCone;
-    %----------------------------------------------------------------
-    %% obtener el contorno espaciado N puntos equidistantes
+    %----------------------------------------------------------------------
+    %% obtain the spaced contour N equidistant points
     
-    [pt,dudt,fofthandle] = interparc([0:(1/N):1],xx,yy,'pchip');
-    pt(end,:)=[]; % elimina el ultimo punto que coincide con el primero (cierra el arco)
+    [pt,dudt,fofthandle] = interparc((0:(1/N):1),xx,yy,'pchip');
+    % eliminates the last point that coincides with the first one (closes the arc)
+    pt(end,:)=[]; 
     
     contours(:,i)=reshape(pt,(N*2),1);
-    
-    %%   **descomente para ver el contorno y los puntos equidistantes
+    %%   **decommentary to see the contour and the equidistant points
+    %     nlevels = 1;
+    %     [x, y] = meshgrid(xv,yv);
     %     figure(1)
     %     subplot(1, 2, 1);
     %     imshow(img,[0 nlevels-1],'Xdata',[xv(1) xv(end)],'Ydata',[yv(1) yv(end)]);
@@ -127,10 +139,14 @@ for i = 1:n
     %     axis image;
     %
     %     for n = 1:size(dataCone,1)
-    %         rectangle('Position',[dataCone(n).BoundingBox(1)-(xsize/2),dataCone(n).BoundingBox(2)-(ysize/2),dataCone(n).BoundingBox(3),dataCone(n).BoundingBox(4)],'EdgeColor','y','LineWidth',1);
+    %         rectangle('Position',[dataCone(n).BoundingBox(1)-(xsize/2),...
+    %               dataCone(n).BoundingBox(2)-(ysize/2),...
+    %               dataCone(n).BoundingBox(3),...
+    %               dataCone(n).BoundingBox(4)],...
+    %               'EdgeColor','y','LineWidth',1);
     %         xc= dataCone(n).Centroid(1)-(xsize/2);
     %         yc= dataCone(n).Centroid(2)-(ysize/2);
-    %         plot(xc,yc,'*'); %dibuja el centro de masa de los objetos
+    %         plot(xc,yc,'*'); %draws the centre of mass of the objects
     %     end
     %     title 'Cone contour'
     %     hold off;
