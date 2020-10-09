@@ -29,7 +29,6 @@ In figure 1. You can see, a schematic with the steps involved in the Eigenshape 
 <img src="./images/eigenshape_steps.png" align="middle">
 </center>
 <div style='text-align:center;'>
-
 figure 1: Diagram of the morphological analysis process.
 </div>
 
