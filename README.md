@@ -82,30 +82,31 @@ When starting the script you must indicate the directory with the segmentations,
 <pre>
 <code>
 Segmentation_Data/
-├── class-01
-│  ├──  cone-01
-│  │   ├── frame-000.tif
-│  │   ├── frame-001.tif
-│  │   ├── ...
-│  │   ├── frame-119.tif
-│  ├──  cone-02
-│  ├──  ...
-│
-├── class-02
-│  ├──  cone-01
-│  │   ├── frame-000.tif
-│  │   ├── frame-001.tif
-│  │   ├── ...
-│  │   ├── frame-119.tif
-│  ├──  cone-02
-│  ├──  ...
+    group/
+        ├── class-01/
+        │  ├──  cone-01/
+        │  │   ├── frame-000.tif
+        │  │   ├── frame-001.tif
+        │  │   ├── ...
+        │  │   ├── frame-119.tif
+        │  ├──  cone-02/
+        │  ├──  ...
+        │
+        ├── class-02/
+        │  ├──  cone-01/
+        │  │   ├── frame-000.tif
+        │  │   ├── frame-001.tif
+        │  │   ├── ...
+        │  │   ├── frame-119.tif
+        │  ├──  cone-02/
+        │  ├──  ...
 </code>
 </pre>
 </div>
 
-In <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data/segmentation_output/E_2m">data/segmentation_output/E_2m</a> you can see an example of the directory.
+In <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data/segmentation_output/">data/segmentation_output/</a> you can see an example of the directory.
 
-When finished, a new folder (/data) is generated with a coordinate file for each Time-lapse, the file name is coded as follows __contours_nameClass_nameCone.mat__.
+When finished, a new folder (./segmentation_output/data) is generated with a coordinate file for each Time-lapse, the file name is coded as follows __contours_nameClass_nameCone.mat__.
 
 contours_nameClass_nameCone.mat contains a matrix of size (X coordinates + Y coordinates) x frames, for this case 500x120, It is equivalent to 250 equidistant points in a 120-frame time-lapse. 
 

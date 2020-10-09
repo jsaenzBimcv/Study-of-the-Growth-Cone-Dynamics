@@ -1,0 +1,665 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>plotObs</title><meta name="generator" content="MATLAB 9.8"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-04-24"><meta name="DC.source" content="plotObs.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> h = plotObs(scores, varargin)
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">% SYNTAX:</span>
+<span class="comment">%    plotObs(scores)</span>
+<span class="comment">%    h = plotObs(scores, Name, Value, ...)</span>
+<span class="comment">%</span>
+<span class="comment">% INPUTS:</span>
+
+<span class="comment">%    scores     [nobs npc] scores for each observation to be represented as</span>
+<span class="comment">%                dots in the biplot (only first two columns are used)</span>
+<span class="comment">% Optional vale-value pairs:</span>
+<span class="comment">% (case insensitive, accepts substrings)</span>
+<span class="comment">%   'VarLabels' {1 nvar} cell array with labels of variables. Default: not shown</span>
+<span class="comment">%   'ObsLabels' {1 nobs} labels for observations. Default: not shown</span>
+<span class="comment">%   'Groups'    [1 nobs] vector with a group number for each observation</span>
+<span class="comment">%                Default: all observations in the same group</span>
+<span class="comment">%   'Format'    {1 ngroups} cell array of cells with formatting options for each</span>
+<span class="comment">%                group to pass to plot()</span>
+<span class="comment">%</span>
+<span class="comment">% RETURNS:</span>
+<span class="comment">%    h          cell array with handles to: axis, origin lines, axis labels,</span>
+<span class="comment">%                scores (for each group), loadings lines, loadings tips,</span>
+<span class="comment">%                variable labels, observation labels</span>
+<span class="comment">%</span>
+<span class="comment">% EXAMPLES:</span>
+<span class="comment">%</span>
+<span class="comment">%    load fisheriris</span>
+<span class="comment">%    data = meas;</span>
+<span class="comment">%    labels = {'Sepal length' 'Sepal width' 'Petal length' 'Petal width'};</span>
+<span class="comment">%    groups = species;</span>
+<span class="comment">%    [loadings, scores] = pca(zscore(data));</span>
+<span class="comment">%</span>
+<span class="comment">%    % simple biplot</span>
+<span class="comment">%    biplotG(scores)</span>
+<span class="comment">%</span>
+<span class="comment">%    % with groups and loadings labels</span>
+<span class="comment">%    biplotG(scores, 'Groups', groups, 'VarLabels', labels)</span>
+<span class="comment">%</span>
+<span class="comment">%    % change formating of the second group only</span>
+<span class="comment">%    format = { {}; {'Marker', '^', 'MarkerSize', 6}; {} }</span>
+<span class="comment">%    biplotG(scores, 'Groups', groups, 'Format' , format)</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">% Requires: Statistics and Machine Learning Toolbox</span>
+
+
+<span class="comment">%------------- BEGIN CODE --------------</span>
+
+
+<span class="comment">% ARGUMENTS</span>
+<span class="comment">% loadings and scores</span>
+<span class="keyword">if</span> nargin &lt; 2, scores = []; <span class="keyword">end</span>
+[nobs, npc2] = size(scores);
+<span class="comment">% cut unused dimensions</span>
+<span class="keyword">if</span> npc2 &gt; 2, scores = scores(:,1:2); <span class="keyword">end</span>
+scores(:,1) = zscore(scores(:,1));
+scores(:,2) = zscore(scores(:,2));
+<span class="comment">% parse varargin (could use inputParser but something much simpler will suffice)</span>
+defaults = struct(<span class="string">'varLabels'</span>,  0, <span class="string">'obsLabels'</span>, 0, <span class="keyword">...</span>
+                  <span class="string">'groups'</span>, ones(1,nobs), <span class="string">'format'</span>, 0 );
+opts = parseopts(varargin, defaults);
+
+<span class="comment">% format</span>
+<span class="comment">% default format is circles with changing color for each group</span>
+ngroups = length(unique(opts.groups));
+<span class="keyword">if</span> ngroups &lt;= 7, obsColors = lines(ngroups);
+<span class="keyword">else</span> obsColors = parula(ngroups); <span class="keyword">end</span>
+formatDefault = arrayfun(@(i) {<span class="string">'Marker'</span>, <span class="string">'.'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="keyword">...</span>
+    obsColors(i,:), <span class="string">'MarkerSize'</span>, 8},  1:ngroups, <span class="string">'unif'</span>, false)';
+<span class="keyword">if</span> ~iscell(opts.format) <span class="comment">% no input given, use default</span>
+    opts.format = formatDefault;
+<span class="keyword">else</span> <span class="comment">% use input when given, default otherwise</span>
+    opts.format = parseformat(opts.format, formatDefault);
+<span class="keyword">end</span>
+
+<span class="comment">% PLOT</span>
+<span class="comment">% open new figure (unless an empty plot/subplot is active)</span>
+<span class="keyword">if</span> ~isempty(get(gca, <span class="string">'children'</span>))
+    figure();
+<span class="keyword">end</span>
+<span class="comment">%axis square</span>
+axis <span class="string">ij</span>
+
+hold <span class="string">on</span>
+
+<span class="comment">% set axis</span>
+[hax, h0] = formataxis();
+hlab = labelaxis();
+
+
+
+<span class="comment">% plot loadings</span>
+<span class="comment">%htips = plot(loadings(:,1), loadings(:,2), 'o');</span>
+<span class="comment">%set(htips, opts.formatLoadings{1}{:})</span>
+<span class="comment">%hlines = plot([zeros(nvar,1) loadings(:,1)]', [zeros(nvar,1) loadings(:,2)]');</span>
+<span class="comment">%set(hlines, opts.formatLoadings{2}{:})</span>
+
+
+
+<span class="comment">% plot scores</span>
+<span class="keyword">if</span> ~isempty(scores)
+
+    <span class="comment">% normalize: scores are scaled to fit in the loadings interval</span>
+    <span class="comment">% divide each score by the maximum absolute value of all scores and</span>
+    <span class="comment">% multiply by the maximum length of loadings vectors</span>
+    <span class="comment">%maxlen = max(sqrt(loadings(:,1).^2 + loadings(:,2).^2));</span>
+    <span class="comment">%scores = scores./max(max(abs(scores)))*maxlen;</span>
+
+    <span class="comment">% Then biplot changes the sign of score coordinates</span>
+    <span class="comment">% according to the sign convention for the coefs  ... why ???</span>
+
+    <span class="comment">% plot each group with its format options</span>
+    groupID = unique(opts.groups); <span class="comment">% can be numbers or cell of strings</span>
+    ngroups = length(groupID)
+    hscores = NaN(ngroups,1);
+    <span class="keyword">for</span> igroup = 1:ngroups
+        <span class="keyword">if</span> iscell(opts.groups)
+            idx = strcmp(groupID(igroup), opts.groups);
+            <span class="comment">%idx</span>
+        <span class="keyword">else</span>
+            idx = (opts.groups == groupID(igroup));
+            <span class="comment">%idx</span>
+        <span class="keyword">end</span>
+
+        hs = plot(scores(idx,1), scores(idx,2), <span class="string">'o'</span>);
+        set(hs, opts.format{igroup}{:})
+        hscores(igroup) = hs;
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> ngroups&gt;1
+        c=colorbar(); <span class="comment">%'Direction','reverse','LOCATION','southoutside'</span>
+<span class="comment">%         c=colorbar();</span>
+        caxis([1,ngroups])
+        c.Label.FontSize = 16;
+        c.Ticks.FontSize = 12;
+        c.Label.String = <span class="string">'Time-Lapse'</span>;
+
+
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+
+<span class="comment">% ANNOTATE</span>
+<span class="comment">% observations labels</span>
+hobs = labelpoints(scores(:,1), scores(:,2), opts.obsLabels);
+
+
+<span class="comment">% OUTPUTS</span>
+<span class="keyword">if</span> nargout &gt; 0
+    h = {hax h0 hlab hscores hlines htips hobs};
+<span class="keyword">end</span>
+
+
+<span class="comment">%------------ END OF CODE --------------</span>
+<span class="keyword">end</span>
+
+<span class="comment">%----------- SUBFUNCTIONS --------------</span>
+
+<span class="keyword">function</span> opts = parseopts(input, defaults)
+<span class="comment">% input:    cell array of name-value pairs</span>
+<span class="comment">% defaults: struct with default values</span>
+<span class="comment">% opts:     struct with parsed options</span>
+
+opts = defaults;
+validNames = fieldnames(defaults);
+
+<span class="comment">% go over input pairs</span>
+<span class="keyword">for</span> pair = reshape(input, 2, []) <span class="comment">% pair is {Name;Value}</span>
+
+    <span class="comment">% find option position (case insensitive, accepts substrings)</span>
+    name = pair{1};
+    match = strncmpi(name, validNames, length(name));
+
+    <span class="comment">% replace defaults with supplied inputs</span>
+    <span class="keyword">if</span> any(match)
+        opts.(validNames{match}) = pair{2};
+   <span class="keyword">else</span>
+      error(<span class="string">'%s is not a recognized parameter name'</span>, name)
+   <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% ---</span>
+<span class="keyword">function</span> format = parseformat(input, default)
+<span class="comment">% check if input is cell of cells</span>
+<span class="comment">% if only one group is given it could be a simple cell e.g. {'Color','r'}</span>
+<span class="comment">% but the parser expects cell of cells, so fix it</span>
+<span class="keyword">if</span> ~iscell(input{1}) <span class="comment">% simple cell</span>
+    input = {input};
+<span class="keyword">end</span>
+
+<span class="comment">% go over input (if less groups are given in format than in groups, the</span>
+<span class="comment">% remaining will keep default formatting)</span>
+format = default;
+<span class="keyword">for</span> igroup = 1:numel(input)
+    <span class="keyword">for</span> pair = reshape(input{igroup}, 2, []) <span class="comment">% pair is {Name;Value}</span>
+        <span class="comment">% is there a default value?</span>
+        idx = find(strcmp(pair{1}, default{igroup}));
+        <span class="keyword">if</span> isempty(idx) <span class="comment">% add value</span>
+            format{igroup} = {format{igroup}{:} pair{1} pair{2}};
+        <span class="keyword">else</span> <span class="comment">% replace default value</span>
+            format{igroup}{idx+1} = pair{2};
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% ---</span>
+<span class="keyword">function</span> [hax, h0] = formataxis()
+<span class="comment">% setup axis for biplot</span>
+
+xlim([-4.5 4.5])
+ylim([-4 2])
+grid <span class="string">on</span>
+grid <span class="string">minor</span>
+
+
+hax = gca;
+<span class="comment">% add origin lines</span>
+hx = abline(0,0, <span class="string">'Color'</span>,[.1 .1 .1], <span class="string">'LineStyle'</span>, <span class="string">':'</span>);
+hy = vline(0, <span class="string">'Color'</span>,[.1 .1 .1], <span class="string">'LineStyle'</span>, <span class="string">':'</span>);
+h0 = [hx hy];
+<span class="comment">% prettify</span>
+set(hax, <span class="keyword">...</span>
+    <span class="string">'FontName'</span>    , <span class="string">'Helvetica'</span>, <span class="keyword">...</span>
+    <span class="string">'FontSize'</span>    , 12  , <span class="keyword">...</span>
+    <span class="string">'Box'</span>         , <span class="string">'on'</span>     , <span class="keyword">...</span>
+    <span class="string">'TickDir'</span>     , <span class="string">'out'</span>     , <span class="keyword">...</span>
+    <span class="string">'TickLength'</span>  , [.01 .01] , <span class="keyword">...</span>
+    <span class="string">'XMinorTick'</span>  , <span class="string">'off'</span>     , <span class="keyword">...</span>
+    <span class="string">'YMinorTick'</span>  , <span class="string">'off'</span>     , <span class="keyword">...</span>
+    <span class="string">'XColor'</span>      , [.1 .1 .1], <span class="keyword">...</span>
+    <span class="string">'YColor'</span>      , [.1 .1 .1], <span class="keyword">...</span>
+    <span class="string">'LineWidth'</span>   , 1         );
+<span class="comment">%  'YGrid'       , 'on'      , ...</span>
+
+<span class="keyword">end</span>
+
+<span class="comment">% ---</span>
+<span class="keyword">function</span> h = abline(m,b,varargin)
+<span class="comment">% plots y=m*x+b line behind other plots</span>
+<span class="comment">% example: abline(1,0,'Color',[.8 .8 .8]) % reference y = x line</span>
+xlim = get(gca,<span class="string">'Xlim'</span>);
+hExist = get(gca,<span class="string">'children'</span>);
+hLine = line(xlim, b+m*xlim, varargin{:});
+uistack(hExist,<span class="string">'top'</span>);
+<span class="keyword">if</span> (nargout&gt;0), h = hLine; <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% ---</span>
+<span class="keyword">function</span> h = vline(x,varargin)
+<span class="comment">% plots vertical line behind other plots crossing x-axis at x</span>
+<span class="comment">% example: vline(0,'Color',[.8 .8 .8]) % y axis line</span>
+ylim = get(gca,<span class="string">'Ylim'</span>);
+hExist = get(gca,<span class="string">'children'</span>);
+hLine = line([x x], ylim, varargin{:});
+uistack(hExist,<span class="string">'top'</span>);
+<span class="keyword">if</span> (nargout&gt;0), h = hLine; <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% ---</span>
+<span class="keyword">function</span> h = labelaxis()
+<span class="comment">% label axis</span>
+hx = xlabel(<span class="string">'Component 1'</span>);
+hy = ylabel(<span class="string">'Component 2'</span>);
+hlab = [hx hy];
+set(hlab, <span class="keyword">...</span>
+    <span class="string">'FontName'</span>   , <span class="string">'Helvetica'</span>, <span class="keyword">...</span>
+    <span class="string">'FontSize'</span>   , 9  );
+<span class="keyword">if</span> (nargout&gt;0), h = hlab; <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% ---</span>
+<span class="keyword">function</span> h = labelpoints(x, y, labels, color)
+<span class="comment">% add labels to points in a scatter plot</span>
+<span class="keyword">if</span> nargin &lt; 4 || isempty(color), color = [.1 .1 .1]; <span class="keyword">end</span>
+<span class="comment">% if labels = 0 or [] or {} do nothing</span>
+<span class="keyword">if</span> ~ (isempty(labels) || (~iscell(labels) &amp;&amp; isequal(labels, 0)))
+    <span class="comment">% if labels are numbers convert to cell array of strings</span>
+    <span class="keyword">if</span> isnumeric(labels), labels = cellstr(num2str(labels')); <span class="keyword">end</span>
+    <span class="comment">% add labels to plot</span>
+    hold <span class="string">on</span>
+    htxt = text(x, y, labels);
+    set(htxt, <span class="keyword">...</span>
+        <span class="string">'VerticalAlignment'</span>, <span class="string">'bottom'</span>, <span class="string">'HorizontalAlignment'</span>, <span class="string">'left'</span>, <span class="keyword">...</span>
+        <span class="string">'FontSize'</span>, 12, <span class="string">'FontName'</span>, <span class="string">'Helvetica'</span>, <span class="string">'Color'</span>, color )
+    hold <span class="string">off</span>
+<span class="keyword">else</span>
+    htxt = [];
+<span class="keyword">end</span>
+<span class="keyword">if</span> (nargout&gt;0), h = htxt; <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Index in position 2 exceeds array bounds.
+
+Error in plotObs (line 58)
+scores(:,1) = zscore(scores(:,1));
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function h = plotObs(scores, varargin)
+% 
+% 
+%
+% SYNTAX:  
+%    plotObs(scores)
+%    h = plotObs(scores, Name, Value, ...)
+%  
+% INPUTS:
+
+%    scores     [nobs npc] scores for each observation to be represented as 
+%                dots in the biplot (only first two columns are used)
+% Optional vale-value pairs: 
+% (case insensitive, accepts substrings)
+%   'VarLabels' {1 nvar} cell array with labels of variables. Default: not shown 
+%   'ObsLabels' {1 nobs} labels for observations. Default: not shown
+%   'Groups'    [1 nobs] vector with a group number for each observation
+%                Default: all observations in the same group
+%   'Format'    {1 ngroups} cell array of cells with formatting options for each
+%                group to pass to plot()
+%
+% RETURNS:
+%    h          cell array with handles to: axis, origin lines, axis labels, 
+%                scores (for each group), loadings lines, loadings tips, 
+%                variable labels, observation labels
+%
+% EXAMPLES:
+%
+%    load fisheriris
+%    data = meas;
+%    labels = {'Sepal length' 'Sepal width' 'Petal length' 'Petal width'};
+%    groups = species;
+%    [loadings, scores] = pca(zscore(data));
+%
+%    % simple biplot
+%    biplotG(scores)
+%
+%    % with groups and loadings labels
+%    biplotG(scores, 'Groups', groups, 'VarLabels', labels)
+%
+%    % change formating of the second group only
+%    format = { {}; {'Marker', '^', 'MarkerSize', 6}; {} }
+%    biplotG(scores, 'Groups', groups, 'Format' , format)
+%
+%
+% Requires: Statistics and Machine Learning Toolbox 
+
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH- BEGIN CODE REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+
+
+% ARGUMENTS
+% loadings and scores
+if nargin < 2, scores = []; end
+[nobs, npc2] = size(scores);
+% cut unused dimensions
+if npc2 > 2, scores = scores(:,1:2); end
+scores(:,1) = zscore(scores(:,1));
+scores(:,2) = zscore(scores(:,2));
+% parse varargin (could use inputParser but something much simpler will suffice)
+defaults = struct('varLabels',  0, 'obsLabels', 0, ...
+                  'groups', ones(1,nobs), 'format', 0 );
+opts = parseopts(varargin, defaults);
+
+% format
+% default format is circles with changing color for each group
+ngroups = length(unique(opts.groups));
+if ngroups <= 7, obsColors = lines(ngroups); 
+else obsColors = parula(ngroups); end
+formatDefault = arrayfun(@(i) {'Marker', '.', 'MarkerEdgeColor', ...
+    obsColors(i,:), 'MarkerSize', 8},  1:ngroups, 'unif', false)'; 
+if ~iscell(opts.format) % no input given, use default
+    opts.format = formatDefault;
+else % use input when given, default otherwise
+    opts.format = parseformat(opts.format, formatDefault);
+end
+
+% PLOT
+% open new figure (unless an empty plot/subplot is active)
+if ~isempty(get(gca, 'children'))
+    figure();
+end
+%axis square
+axis ij
+
+hold on
+
+% set axis
+[hax, h0] = formataxis();
+hlab = labelaxis();
+
+
+
+% plot loadings
+%htips = plot(loadings(:,1), loadings(:,2), 'o');
+%set(htips, opts.formatLoadings{1}{:})
+%hlines = plot([zeros(nvar,1) loadings(:,1)]', [zeros(nvar,1) loadings(:,2)]');
+%set(hlines, opts.formatLoadings{2}{:})
+
+
+
+% plot scores
+if ~isempty(scores)
+    
+    % normalize: scores are scaled to fit in the loadings interval
+    % divide each score by the maximum absolute value of all scores and
+    % multiply by the maximum length of loadings vectors
+    %maxlen = max(sqrt(loadings(:,1).^2 + loadings(:,2).^2));
+    %scores = scores./max(max(abs(scores)))*maxlen;
+    
+    % Then biplot changes the sign of score coordinates
+    % according to the sign convention for the coefs  ... why ???
+    
+    % plot each group with its format options
+    groupID = unique(opts.groups); % can be numbers or cell of strings
+    ngroups = length(groupID)
+    hscores = NaN(ngroups,1);
+    for igroup = 1:ngroups
+        if iscell(opts.groups)
+            idx = strcmp(groupID(igroup), opts.groups);
+            %idx
+        else
+            idx = (opts.groups == groupID(igroup));
+            %idx
+        end
+        
+        hs = plot(scores(idx,1), scores(idx,2), 'o');
+        set(hs, opts.format{igroup}{:})
+        hscores(igroup) = hs;
+    end
+    if ngroups>1
+        c=colorbar(); %'Direction','reverse','LOCATION','southoutside'
+%         c=colorbar();
+        caxis([1,ngroups])
+        c.Label.FontSize = 16;
+        c.Ticks.FontSize = 12;
+        c.Label.String = 'Time-Lapse';
+        
+        
+    end
+end
+
+
+% ANNOTATE
+% observations labels
+hobs = labelpoints(scores(:,1), scores(:,2), opts.obsLabels);
+
+
+% OUTPUTS
+if nargout > 0
+    h = {hax h0 hlab hscores hlines htips hobs}; 
+end
+
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH END OF CODE REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+end
+
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH- SUBFUNCTIONS REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+
+function opts = parseopts(input, defaults)
+% input:    cell array of name-value pairs
+% defaults: struct with default values
+% opts:     struct with parsed options
+
+opts = defaults;
+validNames = fieldnames(defaults);
+
+% go over input pairs
+for pair = reshape(input, 2, []) % pair is {Name;Value}
+    
+    % find option position (case insensitive, accepts substrings)
+    name = pair{1};
+    match = strncmpi(name, validNames, length(name));
+    
+    % replace defaults with supplied inputs
+    if any(match)
+        opts.(validNames{match}) = pair{2};
+   else
+      error('%s is not a recognized parameter name', name)
+   end
+end
+end
+
+% REPLACE_WITH_DASH_DASH-
+function format = parseformat(input, default)
+% check if input is cell of cells
+% if only one group is given it could be a simple cell e.g. {'Color','r'}
+% but the parser expects cell of cells, so fix it
+if ~iscell(input{1}) % simple cell
+    input = {input};
+end
+
+% go over input (if less groups are given in format than in groups, the
+% remaining will keep default formatting)
+format = default;
+for igroup = 1:numel(input)
+    for pair = reshape(input{igroup}, 2, []) % pair is {Name;Value}
+        % is there a default value?
+        idx = find(strcmp(pair{1}, default{igroup}));
+        if isempty(idx) % add value
+            format{igroup} = {format{igroup}{:} pair{1} pair{2}};
+        else % replace default value
+            format{igroup}{idx+1} = pair{2};
+        end
+    end
+end
+end
+
+% REPLACE_WITH_DASH_DASH-
+function [hax, h0] = formataxis()
+% setup axis for biplot
+
+xlim([-4.5 4.5])
+ylim([-4 2])
+grid on
+grid minor
+
+
+hax = gca;
+% add origin lines
+hx = abline(0,0, 'Color',[.1 .1 .1], 'LineStyle', ':');
+hy = vline(0, 'Color',[.1 .1 .1], 'LineStyle', ':');
+h0 = [hx hy];
+% prettify 
+set(hax, ... 
+    'FontName'    , 'Helvetica', ... 
+    'FontSize'    , 12  , ...
+    'Box'         , 'on'     , ...
+    'TickDir'     , 'out'     , ...
+    'TickLength'  , [.01 .01] , ...
+    'XMinorTick'  , 'off'     , ...
+    'YMinorTick'  , 'off'     , ...
+    'XColor'      , [.1 .1 .1], ...
+    'YColor'      , [.1 .1 .1], ...
+    'LineWidth'   , 1         );
+%  'YGrid'       , 'on'      , ...
+
+end
+
+% REPLACE_WITH_DASH_DASH-
+function h = abline(m,b,varargin) 
+% plots y=m*x+b line behind other plots 
+% example: abline(1,0,'Color',[.8 .8 .8]) % reference y = x line
+xlim = get(gca,'Xlim');
+hExist = get(gca,'children');
+hLine = line(xlim, b+m*xlim, varargin{:});
+uistack(hExist,'top');
+if (nargout>0), h = hLine; end
+end
+
+% REPLACE_WITH_DASH_DASH-
+function h = vline(x,varargin) 
+% plots vertical line behind other plots crossing x-axis at x 
+% example: vline(0,'Color',[.8 .8 .8]) % y axis line
+ylim = get(gca,'Ylim');
+hExist = get(gca,'children');
+hLine = line([x x], ylim, varargin{:});
+uistack(hExist,'top');
+if (nargout>0), h = hLine; end
+end
+
+% REPLACE_WITH_DASH_DASH-
+function h = labelaxis()
+% label axis 
+hx = xlabel('Component 1');
+hy = ylabel('Component 2');
+hlab = [hx hy];
+set(hlab, ...
+    'FontName'   , 'Helvetica', ...
+    'FontSize'   , 9  );
+if (nargout>0), h = hlab; end
+end
+
+% REPLACE_WITH_DASH_DASH-
+function h = labelpoints(x, y, labels, color) 
+% add labels to points in a scatter plot
+if nargin < 4 || isempty(color), color = [.1 .1 .1]; end
+% if labels = 0 or [] or {} do nothing
+if ~ (isempty(labels) || (~iscell(labels) && isequal(labels, 0)))   
+    % if labels are numbers convert to cell array of strings
+    if isnumeric(labels), labels = cellstr(num2str(labels')); end
+    % add labels to plot
+    hold on
+    htxt = text(x, y, labels);
+    set(htxt, ...
+        'VerticalAlignment', 'bottom', 'HorizontalAlignment', 'left', ...
+        'FontSize', 12, 'FontName', 'Helvetica', 'Color', color )
+    hold off
+else
+    htxt = [];
+end
+if (nargout>0), h = htxt; end
+end
+
+
+##### SOURCE END #####
+--></body></html>
