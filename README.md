@@ -124,17 +124,20 @@ The set of coordinates must be reduced to a comprehensible form (low dimension),
 
 * Open your MATLAB and run the following script:
 ```
-seg_Cone_Morphology/conesSegmentation.m
+3-Dimensionality_Reduction/MorphometryPCA.m
 ```
+The funtion __MorphometryPCA.m__, Perform the Principal Component Analysis and graph the results from the characteristics obtained in the previous step. 
+When starting the script you must indicate the directory with the <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data/segmentation_output/extracted_features/">features extracted</a>.
+
+Note: If you run the script with the option Matlab PUBLISH you can save the results in an HTML report.
 
 <center>
 <img src="./images/MorphometryPCA_08.png" align="middle">
 </center>
 <div style='text-align:center;'>
-figure 5: Explained and Accumulated Variance by Component and Plot of breast cancer classes based on the first 2 principal components of the cancer features.
+figure 5: Screeplot of explained and accumulated variance by component and By-plot of the change in the shape of the growth cones in the first two main components of the growth cone morphometric features.
 </div>
 
-From the plot above, we might want to stop at the fifth principal component. 87% of the information (variances) contained in the data are retained by the first five principal components.
 
 ## Authors
 
