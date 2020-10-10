@@ -1,38 +1,36 @@
 function [ labelVar, nameFolder] = tagVar( prefix,nVar,orden)
 %TAGVAR
-    %   Etique las variables a partir del tipo, ya sea coordenadas ordenadas / intercaladas, ángulos o coordenadas y angulos
-    %   Variables de entrada
-    %*******Elección de variables en el PCA*******************************
-    % sólo coordenadas      vpca=0
-    % sólo ángulos          vpca=1
-    % Coordenadas y angulos vpca=2
-    %     nVar = número de variables a etiquetar
-    %     orden = 1, coordenadas ordenadas 1ero nX y luego las nY
-    %     Orden = 0, coordenadas intercaladas[x1,y1,x2,y2....]
-    %   Variables de salida
-    %       labelVar = vector con las variables etiquetadas
-    %       nameFolder = etiqueta con el nombre del directorio a crear
-     %__________________________________________
-    % HISTORIAL:                                                           %
-    %       +Fecha de realización: revisado 2-Ene-2017 14:51:05                         %
-    %       +Autor: Saenz Jhon J
-    %       +Versión: 1.0                                                  %
-    %       +Cambios: -                                                    %
-    %       +Descripción de los cambios:                         %
-    %_______________________________________________________________________________
-
+    % Label variables by type, either ordered/interleaved coordinates, angles or coordinates and angles
+    % Input variables
+    %******* Choice of variables in the PCA *******************************
+    % Coordinates only          vpca=0
+    % Angles only               vpca=1
+    % Coordinates and angles    vpca=2
+    %     nVar = number of variables to be labelled
+    %     orden = 1, Coordinates ordered first nX and then nY
+    %     Orden = 0, intercalated coordinates [x1,y1,x2,y2....]
+    %   Ouputs
+    %       labelVar = Vector with the labelled variables
+    %       nameFolder = Label with the name of the directory to be created
+    %__________________________________________
+    % HISTORY: 
+    %     Date: revised 2-Jan-2017 14:51:05
+    %     Author: Sáenz Jhon J
+    %     Version: 1.0
+    %     Changes:  
+    % _____________________________________________________________________
 labelVar = cell(1,nVar);
 cnt=1;
 switch prefix
-    case 'C' % sólo coordenadas
+    case 'C' % Coordinates only 
         for  i=1:nVar
-            if orden == 1 %coord ordenadas
+            if orden == 1 %
                 if i<nVar/2+1
                     labelVar{1,i}=strcat('X',num2str(i));
                 else
                     labelVar{1,i}=strcat('Y',num2str(i-nVar/2));
                 end
-            else         %coord intercaladas
+            else         %intercalated coordinates
                 if mod(i,2)==1
                     labelVar{1,i}=strcat('X',num2str(cnt));
                 else
@@ -41,15 +39,15 @@ switch prefix
                 end
             end
         end
-        nameFolder= 'PCA_Coordenadas';
-    case 'A' %sólo ángulos
+        nameFolder= 'PCA_Coordinates';
+    case 'A' % Angles only  
         for  i=1:nVar
             labelVar{1,i}=strcat('A',num2str(i));
         end
-        nameFolder= 'PCA_Ángulos';
-    case 'CA' %Coordenadas y angulos
+        nameFolder= 'PCA_Angles';
+    case 'CA' % Coordinates and angles
         for  i=1:nVar
-            if orden == 1 %coord ordenadas
+            if orden == 1 %
                 if i>=(2*nVar/3)+1
                     labelVar{1,i}=strcat('A',num2str(i-2*nVar/3));
                 else
@@ -60,7 +58,7 @@ switch prefix
                     end
                 end
          
-            else         %coord intercaladas
+            else         % intercalated coordinates
                 if i>=(2*nVar/3)+1
                     labelVar{1,i}=strcat('A',num2str(i-2*nVar/3));
                 else
@@ -73,9 +71,9 @@ switch prefix
                 end                  
             end
         end
-        nameFolder= 'PCA_Coordenadas_Ángulos';
+        nameFolder= 'PCA_Coordinates_Angles';
     otherwise
-        disp('Error!!!, prefix sólo puede ser C, A, CA ')
+        disp('Error!!!, prefix only C, A, CA ')
 end
 
 end
