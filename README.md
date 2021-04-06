@@ -18,6 +18,7 @@ The third challenge, related to the rapid change of shape, size and position req
 ## Prerequisites
 ```
 Mathworks Matlab R2019b
+- tool Image Batch Processor
 ```
 <a href="https://github.com/jsaenzBimcv/Study-of-the-Growth-Cone-Dynamics/tree/main/data">__Example data set__</a>
 
