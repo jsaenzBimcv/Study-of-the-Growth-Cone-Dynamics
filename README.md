@@ -145,6 +145,9 @@ figure 5: Screeplot of explained and accumulated variance by component and By-pl
 * **Muñoz Lasso, DC.** (2017). - *Doctoral Thesis* - Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
 * **Sáenz Gamboa, JJ.** (2017). - *Master Dissertation* - Estudio morfológico en Conos de Crecimiento Mediante Análisis de Componentes Principales Y Modelos Ocultos de Markov. Universitat Politècnica de València.
 
+## Article
+Muñoz-Lasso, D. C., Mollá, B., Sáenz-Gamboa, J. J., Insuasty, E., de la Iglesia-Vaya, M., Pook, M. A., Pallardó, F. V., Palau, F., & Gonzalez-Cabo, P. (2022). Frataxin Deficit Leads to Reduced Dynamics of Growth Cones in Dorsal Root Ganglia Neurons of Friedreich’s Ataxia YG8sR Model: A Multilinear Algebra Approach. Frontiers in Molecular Neuroscience, 15. https://doi.org/10.3389/fnmol.2022.912780
+
 ## References
 
 <a id="1">[1]</a>  Muñoz Lasso, DC. (2017). Fisiopatología de la ataxia de Friedreich: Transporte y degeneración axonal. Universitat Politècnica de València. ( https://doi.org/10.4995/Thesis/10251/92842)
